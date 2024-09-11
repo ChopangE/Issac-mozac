@@ -1,0 +1,25 @@
+{
+    "playerDatas": [
+        {
+            "Id": "Archor",
+            "Health": 100.0,
+            "Damage": 10.0,
+            "Speed": 5.0,
+            "AtkSpeed": 5.0
+        },
+        {
+            "Id": "Mage",
+            "Health": 100.0,
+            "Damage": 10.0,
+            "Speed": 4.0,
+            "AtkSpeed": 4.0
+        },
+        {
+            "Id": "Warrior",
+            "Health": 150.0,
+            "Damage": 15.0,
+            "Speed": 3.0,
+            "AtkSpeed": 2.0
+        }
+    ]
+}
