@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    static Managers instance;
+    private static Managers instance;
     public static Managers Instance { get { Init(); return instance; } }
 
 
+    private StatManager statManager;
+    private GameManager gameManager;
+    public static StatManager StatManager { get { return Instance.statManager; } }
+    public static GameManager GameManager { get { return Instance.gameManager; } }
+
     void Start() {
         Init();
+        Create();
     }
     static void Init() {
         if(instance == null) {
@@ -22,5 +28,16 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(go);
         }
     }
-
+    
+    void Create()
+    {
+        string prefix = "Managers/";
+        if (statManager == null)
+        {
+            GameObject go = Resources.Load<GameObject>(prefix + "StatManager");
+            statManager = go.GetComponent<StatManager>();
+            Instantiate(go,gameObject.transform);
+        }
+        
+    }
 }

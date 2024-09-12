@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Define 
 {
-    public enum Class {
-        Archor, Mage, Warrior,
+    public enum Classes {
+        Archor, Mage, Warrior, None
     }
+    
 }

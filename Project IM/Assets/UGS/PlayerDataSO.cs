@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NorskaLib.Spreadsheets;
 
-namespace GameData 
+namespace GameData
 {
     [System.Serializable]
     public class PlayerData {
