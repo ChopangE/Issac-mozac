@@ -9,7 +9,8 @@ public class AttackBT : Action
     protected Animator anim;
     protected Collider2D coll;
     public override void OnAwake() {
-        anim.GetComponent<Animator>();
-        coll.GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
+        
     }
 }
