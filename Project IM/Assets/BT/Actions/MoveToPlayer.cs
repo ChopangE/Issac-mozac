@@ -8,9 +8,14 @@ public class MoveToPlayer : Action {
     public SharedTransform target;
     public override TaskStatus OnUpdate() {
         // target에 도달하면 성공의 태스크 상태를 반환합니다.
-        if (Vector2.SqrMagnitude(transform.position - target.Value.position) < 0.1f) {
+        float dist = Vector2.SqrMagnitude(transform.position - target.Value.position);
+        if (dist < 3f) {
             return TaskStatus.Success;
         }
+        else if(dist > 10f) {
+            return TaskStatus.Failure;
+        }
+        
         // 아직 목표에 도달하지 못했으므로 계속 이동합니다.
         transform.position = Vector2.MoveTowards(transform.position,
             target.Value.position, speed * Time.deltaTime);

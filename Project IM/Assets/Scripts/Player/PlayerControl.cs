@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("Movement")]
     Rigidbody2D rb;
-    float moveSpeed = 3.0f;
+    float moveSpeed = 4.0f;
     Vector2 direction;
     Vector2 prevDirection;
 
