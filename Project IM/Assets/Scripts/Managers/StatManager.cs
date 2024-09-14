@@ -27,7 +27,6 @@ public class StatManager : IManager
 
     
     
-    //변동 사항이 생길때 마다 호출해주어야함
     public void RefreshData()
     {
         Pd.Id = Classes.ToString();
@@ -54,10 +53,10 @@ public class StatManager : IManager
         return playerData.DataContainer.playerDatas[(int)classes].AtkSpeed;
     }
 
-    public void Init()              //캐릭터 선택 후 classes가 정해진 후 호출하면 됨 
+    public void Init()              
     {
         playerData = Resources.Load<PlayerDataSO>("Data/PlayerDataSO");
-        classes = Define.Classes.Archor;   //임시코드
-        RefreshData();
+        classes = Define.Classes.Archor;   //임시코드 캐릭터 선택되었다고 가정
+        RefreshData();                      //임시코드 나중에 Init에서 따로 뺴야됨 캐릭터 선택후 호출하면됨
     }
 }
