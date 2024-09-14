@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f3e27791b03e0439ad0e42b1682f1f, type: 3}
+  m_Name: PlayerDataSO
+  m_EditorClassIdentifier: 
+  foldoutImportGUI: 1
+  documentId: 1eWr3cYZaxy9JZNwXcHP2j1IxtTJvz-sn_TO85C45zMI
+  selectedTogglesIds:
+  - playerDatas
+  foldoutSerializationGUI: 1
+  serializationOutputPath: ../Assets/UGS
+  serializationFileName: PlayerDataJson
+  serializationFormat: 0
+  dataContainer:
+    playerDatas:
+    - Id: Archor
+      Health: 100
+      Damage: 10
+      Speed: 5
+      AtkSpeed: 5
+    - Id: Mage
+      Health: 100
+      Damage: 10
+      Speed: 4
+      AtkSpeed: 4
+    - Id: Warrior
+      Health: 150
+      Damage: 15
+      Speed: 3
+      AtkSpeed: 2

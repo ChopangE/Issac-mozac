@@ -11,6 +11,5 @@ public class AttackBT : Action
     public override void OnAwake() {
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
-        
     }
 }

@@ -1,0 +1,7 @@
+{
+    "Id": "Warrior",
+    "Health": 55.0,
+    "Damage": 15.0,
+    "Speed": 3.0,
+    "AtkSpeed": 2.0
+}

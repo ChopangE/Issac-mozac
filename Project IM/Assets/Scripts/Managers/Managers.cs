@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
+using Util;
 
 public class Managers : MonoBehaviour
 {
     private static Managers instance;
     public static Managers Instance { get { Init(); return instance; } }
 
+    private IManager statManager = new StatManager();
+    private IManager gameManager;
+    private IManager dataManager = new DataManager();
+    public static StatManager StatManager { get { return Instance.statManager as StatManager; } }
+    public static GameManager GameManager { get { return Instance.gameManager as GameManager; } }
+    public static DataManager DataManager { get { return Instance.dataManager as DataManager; } }
 
-    private StatManager statManager;
-    private GameManager gameManager;
-    public static StatManager StatManager { get { return Instance.statManager; } }
-    public static GameManager GameManager { get { return Instance.gameManager; } }
-
-    void Start() {
+    void Awake() {
         Init();
         Create();
     }
@@ -32,12 +35,12 @@ public class Managers : MonoBehaviour
     void Create()
     {
         string prefix = "Managers/";
-        if (statManager == null)
-        {
-            GameObject go = Resources.Load<GameObject>(prefix + "StatManager");
-            statManager = go.GetComponent<StatManager>();
-            Instantiate(go,gameObject.transform);
-        }
         
+        InitStatManager();              //statManager Initialize
+    }
+
+    void InitStatManager()
+    {
+        statManager.Init();
     }
 }

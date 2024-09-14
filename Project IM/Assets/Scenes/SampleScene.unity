@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 269517873}
   - component: {fileID: 269517874}
   - component: {fileID: 269517875}
+  - component: {fileID: 269517876}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -278,7 +279,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1605978d6246f54428098495676672b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  classes: 3
+--- !u!70 &269517876
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269517869}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000029802322, y: 0.041366935}
+  m_Size: {x: 0.40904313, y: 0.5626919}
+  m_Direction: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6026657639720739548, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
 --- !u!1 &1303774524
@@ -518,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 525851667541261517, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026657639720739548, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
