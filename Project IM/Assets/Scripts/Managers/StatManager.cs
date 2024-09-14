@@ -38,26 +38,26 @@ public class StatManager : IManager
     }
     
     public float GetMaxHealth() {
-        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //������ ��
+        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Health;
     }
     public float GetSpeed() {
-        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //������ ��
+        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Speed;
     }
     public float GetDamage() {
-        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //������ ��
+        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Damage;
     }
     public float GetAtkSpeed() {
-        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //������ ��
+        if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].AtkSpeed;
     }
 
-    public void Init()
+    public void Init()              //캐릭터 선택 후 classes가 정해진 후 호출하면 됨 
     {
         playerData = Resources.Load<PlayerDataSO>("Data/PlayerDataSO");
-        classes = Define.Classes.Warrior;
+        classes = Define.Classes.Archor;   //임시코드
         RefreshData();
     }
 }

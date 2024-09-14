@@ -33,7 +33,9 @@ public class Player : MonoBehaviour, IDamageable
 
     void Init()
     {
-        DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
+        Managers.DataManager.SaveCurrentPlayerData();
+        //DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
+        Managers.DataManager.LoadCurrentPlayerData();
     }
 
     void TetsDebug()
