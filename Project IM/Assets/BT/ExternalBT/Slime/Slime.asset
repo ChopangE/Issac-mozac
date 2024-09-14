@@ -25,14 +25,13 @@ MonoBehaviour:
         To Player","Instant":true,"Singlespeed":3,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}}]},{"Type":"MoveToOriginalPos","NodeData":{"Offset":"(77.66428,144.347931)"},"ID":7,"Name":"Move
         To Original Pos","Instant":true,"Singlespeed":2}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(260.741974,201.363632)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CanAttack","NodeData":{"Offset":"(-122.449776,236.91008)"},"ID":9,"Name":"Can
         Attack","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Singledistance":3,"Singlefov":45},{"Type":"SlimeAttack","NodeData":{"Offset":"(-4.647917,235.416885)"},"ID":10,"Name":"Slime
-        Attack","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Animatoranim":0},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(123.326492,235.451248)"},"ID":11,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":3},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}]}'
+        Attack","Instant":true,"SharedTransformtarget":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true},"Singledamage":3},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(123.326492,235.451248)"},"ID":11,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":3},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"Target","IsShared":true}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
-        unityObjects:
-        - {fileID: 0}
+        unityObjects: []
         byteData: 
         byteDataArray: 
       Version: 1.7.10

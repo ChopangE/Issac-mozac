@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void GetDamage(float damage) {
         curHealth -= damage;
+        Debug.Log(curHealth);
     }
 
     void Start()

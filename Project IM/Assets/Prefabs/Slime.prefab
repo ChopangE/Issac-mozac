@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 525851667541261514}
   - component: {fileID: 525851667541261515}
   - component: {fileID: -4277764206058848791}
-  - component: {fileID: 6026657639720739548}
+  - component: {fileID: 2152394891915015711}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -148,8 +148,8 @@ MonoBehaviour:
       Version: 1.7.10
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!70 &6026657639720739548
-CapsuleCollider2D:
+--- !u!58 &2152394891915015711
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,6 +161,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028968096, y: 0.009656072}
-  m_Size: {x: 0.36269903, y: 0.36269903}
-  m_Direction: 0
+  m_Offset: {x: 0.025720537, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.18277866
