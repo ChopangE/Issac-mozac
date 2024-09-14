@@ -9,7 +9,11 @@ namespace Util
        public enum Classes {
            Archor, Mage, Warrior, None
        }
-       
+
+       public enum EnemyType
+       {
+           Slime, Skeleton,
+       }
    } 
 }
 

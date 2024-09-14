@@ -8,9 +8,11 @@ using DG.Tweening;
 public class SlimeAttack : AttackBT
 {
     public SharedTransform target;
-    public override void OnStart() {
+    public override void OnStart()
+    {
+        base.OnStart();
         anim.Play("SlimeAttack");
-        transform.DOMove(target.Value.position, 0.3f, false).OnComplete(
+        transform.DOMove(target.Value.position, 0.2f, false).OnComplete(
             () =>
             {
                 anim.Play("Slime");

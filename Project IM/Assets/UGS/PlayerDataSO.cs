@@ -21,7 +21,7 @@ namespace GameData
         [SpreadsheetPage("PlayerData")]
         public List<PlayerData> playerDatas;
     }
-    [CreateAssetMenu(fileName = "PlayerDataSO", menuName = "DataSO")]
+    [CreateAssetMenu(fileName = "PlayerDataSO", menuName = "PlayerDataSO")]
     public class PlayerDataSO : SpreadsheetsContainerBase {
         [SpreadsheetContent]
         [SerializeField] DataContainer dataContainer;

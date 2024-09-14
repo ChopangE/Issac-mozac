@@ -8,9 +8,14 @@ public class AttackBT : Action
 {
     protected Animator anim;
     protected Collider2D coll;
-    public float damage;
+    protected float damage;
     public override void OnAwake() {
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
+    }
+
+    public override void OnStart()
+    {
+        damage = gameObject.GetComponent<EnemyBase>().Data.Damage;
     }
 }
