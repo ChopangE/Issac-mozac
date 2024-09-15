@@ -40,6 +40,10 @@ public class StatManager : IManager
         if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Health;
     }
+    /// <summary>
+    /// 나중에 업그레이드 추가 예정
+    /// </summary>
+    /// <returns></returns>
     public float GetSpeed() {
         if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Speed;
