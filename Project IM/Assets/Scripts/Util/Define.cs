@@ -14,6 +14,11 @@ namespace Util
        {
            Slime, Skeleton,
        }
+
+       public enum PrefabType
+       {
+           Weapon, Enemy,
+       }
    } 
 }
 
