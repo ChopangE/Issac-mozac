@@ -1,45 +1,82 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 using Util;
 using GameData;
 
-public class Player : MonoBehaviour, IDamageable
+
+
+namespace Player
 {
-
-    public Define.Classes classes { get { return (Define.Classes)Enum.Parse(typeof(Define.Classes), Managers.StatManager.Pd.Id); } }
-
-    public float maxHealth { get {return Managers.StatManager.GetMaxHealth(); } }
-
-    public float curHealth { get { return Managers.StatManager.Pd.Health; } set { Managers.StatManager.Pd.Health = value; } }
-    
-    public float atkSpeed { get { return Managers.StatManager.Pd.AtkSpeed; } set {  Managers.StatManager.Pd.AtkSpeed = value; } }
-
-    public float damage {get { return Managers.StatManager.Pd.Damage; } set { Managers.StatManager.Pd.Damage = value; } }
-
-    public float speed {get { return Managers.StatManager.Pd.Speed; } set { Managers.StatManager.Pd.Speed = value; } }
-
-    public void GetDamage(float damage) {
-        curHealth -= damage;
-        Debug.Log(curHealth);
-    }
-
-    void Start()
+    public class Player : MonoBehaviour, IDamageable
     {
-        Init();
-    }
+        private PlayerData pd;
+        public Define.Classes classes
+        {
+            get { return (Define.Classes)Enum.Parse(typeof(Define.Classes), pd.Id); }
+        }
 
-    void Init()
-    {
-        Managers.DataManager.SaveCurrentPlayerData();
-        //DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
-        Managers.DataManager.LoadCurrentPlayerData();
-    }
+        public float maxHealth
+        {
+            get { return Managers.StatManager.GetMaxHealth(); }
+        }
 
-    void TetsDebug()
-    {
-        Debug.Log(classes + " " + curHealth + " " + damage + " "+atkSpeed + " " + speed);
+        public Action<float> healthEvent;
+        public float curHealth
+        {
+            get { return pd.Health; }
+            set
+            {
+                pd.Health = value;
+                healthEvent?.Invoke(pd.Health);
+            }
+        }
+
+        public float atkSpeed
+        {
+            get { return pd.AtkSpeed; }
+            set { pd.AtkSpeed = value; }
+        }
+
+        public float damage
+        {
+            get { return pd.Damage; }
+            set { pd.Damage = value; }
+        }
+
+        public float speed
+        {
+            get { return pd.Speed; }
+            set { pd.Speed = value; }
+        }
+
+        public void GetDamage(float damage)
+        {
+            curHealth -= damage;
+            Debug.Log(curHealth);
+        }
+
+        void Start()
+        {
+            Init();
+        }
+        
+        void Init()
+        {
+            //DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
+            Managers.DataManager.LoadCurrentPlayerData();
+            pd = Managers.StatManager.Pd;
+        }
+
+        void TetsDebug()
+        {
+            Debug.Log(classes + " " + curHealth + " " + damage + " " + atkSpeed + " " + speed);
+        }
+
+
     }
 }

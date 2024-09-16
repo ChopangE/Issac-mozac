@@ -10,31 +10,7 @@ using UnityWeld.Binding;
 [Binding]
 public class BaseViewModel : MonoBehaviour, INotifyPropertyChanged
 {
-    private string ttext;
-    [Binding]
-    public string Text
-    {
-        get
-        { return ttext; }
-        set
-        {
-            if (ttext == value)
-            {
-                return;
-            }
-            
-            ttext = value;
-            OnPropertyChanged("Text");
-        }
-    }
-    // Start is called before the first frame update
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        Text = Managers.StatManager.Pd.Health.ToString();
-    }
+    
     
     public event PropertyChangedEventHandler PropertyChanged;
 

@@ -29,5 +29,7 @@ public class DataManager : IManager
     }
 
     public void Init()
-    { }
+    {
+        Managers.DataManager.LoadCurrentPlayerData();
+    }
 }

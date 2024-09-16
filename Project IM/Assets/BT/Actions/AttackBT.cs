@@ -9,9 +9,11 @@ public class AttackBT : Action
     protected Animator anim;
     protected Collider2D coll;
     protected float damage;
+    protected SpriteRenderer sprite;
     public override void OnAwake() {
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     public override void OnStart()

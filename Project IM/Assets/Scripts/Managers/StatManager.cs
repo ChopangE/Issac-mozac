@@ -30,10 +30,10 @@ public class StatManager : IManager
     public void RefreshData()
     {
         Pd.Id = Classes.ToString();
-        Pd.Damage = GetDamage();
+        Pd.Damage = GetInitDamage();
         Pd.Health = GetMaxHealth();           //조금 수정될 필요 있음.
-        Pd.AtkSpeed = GetAtkSpeed();
-        Pd.Speed = GetSpeed();
+        Pd.AtkSpeed = GetInitAtkSpeed();
+        Pd.Speed = GetInitSpeed();
     }
     
     public float GetMaxHealth() {
@@ -44,15 +44,15 @@ public class StatManager : IManager
     /// 나중에 업그레이드 추가 예정
     /// </summary>
     /// <returns></returns>
-    public float GetSpeed() {
+    public float GetInitSpeed() {
         if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Speed;
     }
-    public float GetDamage() {
+    public float GetInitDamage() {
         if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].Damage;
     }
-    public float GetAtkSpeed() {
+    public float GetInitAtkSpeed() {
         if (playerData.DataContainer.playerDatas == null || classes == Define.Classes.None) return -1.0f;  //쓰레기값
         return playerData.DataContainer.playerDatas[(int)classes].AtkSpeed;
     }

@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
+        InputMove();
         switch (playerState) {
             case PlayerState.Idle:
                 UpdateIdle();
@@ -39,6 +40,7 @@ public class PlayerControl : MonoBehaviour
                 UpdateRun();
                 break;
             case PlayerState.Attack:
+                UpdateAttack();
                 break;
             default:
                 break;
@@ -48,15 +50,17 @@ public class PlayerControl : MonoBehaviour
     }
 
     void UpdateIdle() {
-        InputMove();
         PlayerMove();
     }
 
     void UpdateRun() {
-        InputMove();
         PlayerMove();
     }
 
+    void UpdateAttack()
+    {
+        
+    }
 
 
     void InputMove() {
@@ -82,7 +86,8 @@ public class PlayerControl : MonoBehaviour
         anim.SetFloat("MoveY", direction.y);
     }
 
-    void SetStatus() {
+    void SetStatus() 
+    {
         if(direction.magnitude > 0.2f)playerState = PlayerState.Run;
         else playerState = PlayerState.Idle;
     }
