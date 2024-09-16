@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
     Vector2 direction;
     Vector2 prevDirection;
 
+    [Header("Attack")] 
+    bool isAttack;
 
 
     void Awake() {
@@ -27,11 +29,12 @@ public class PlayerControl : MonoBehaviour
     }
     void Start()
     {
-        
+        isAttack = false;
     }
     void Update()
     {
-        InputMove();
+        GetInput();
+        SetStatus();
         switch (playerState) {
             case PlayerState.Idle:
                 UpdateIdle();
@@ -46,7 +49,6 @@ public class PlayerControl : MonoBehaviour
                 break;
         }
         SetAnimation();
-        SetStatus();
     }
 
     void UpdateIdle() {
@@ -62,19 +64,32 @@ public class PlayerControl : MonoBehaviour
         
     }
 
+    void AttackEnd()
+    {
+        isAttack = false;
+    }
+    
+    void GetInput() {
+        if (Input.GetKeyDown(KeyCode.Z) && !isAttack)
+        {
+            isAttack = true;
+            Debug.Log("Shoot");
+            rb.velocity = Vector2.zero;
+            //Shoot logic
+        }
 
-    void InputMove() {
+        if (isAttack) return;
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
         if(inputX == 0 && inputY == 0 && (direction.x != 0 || direction.y != 0)) {
             prevDirection = direction;
         }
-        
         direction = new Vector2(inputX, inputY);
         
     }
 
-    void PlayerMove() {
+    void PlayerMove()
+    {
         direction.Normalize();
         rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
     }
@@ -84,10 +99,16 @@ public class PlayerControl : MonoBehaviour
         anim.SetFloat("MoveMag", direction.magnitude);
         anim.SetFloat("MoveX", direction.x);
         anim.SetFloat("MoveY", direction.y);
+        anim.SetBool("Attack", isAttack);
     }
 
     void SetStatus() 
     {
+        if (isAttack)
+        {
+            playerState = PlayerState.Attack;
+            return;
+        }
         if(direction.magnitude > 0.2f)playerState = PlayerState.Run;
         else playerState = PlayerState.Idle;
     }
