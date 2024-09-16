@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
         Idle, Run, Attack
     }
     PlayerState playerState = PlayerState.Idle;
-
+    
 
     [Header("Animation")]
     Animator anim;
@@ -16,16 +16,18 @@ public class PlayerControl : MonoBehaviour
     [Header("Movement")]
     Rigidbody2D rb;
     float moveSpeed = 4.0f;
-    Vector2 direction;
-    Vector2 prevDirection;
+    public Vector2 direction;
+    public Vector2 prevDirection;
 
     [Header("Attack")] 
+    PlayerWeapon playerWeapon;
     bool isAttack;
 
 
     void Awake() {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerWeapon = GetComponent<PlayerWeapon>();
     }
     void Start()
     {
@@ -75,9 +77,9 @@ public class PlayerControl : MonoBehaviour
             isAttack = true;
             Debug.Log("Shoot");
             rb.velocity = Vector2.zero;
-            //Shoot logic
+            playerWeapon.StartAttack();
         }
-
+        
         if (isAttack) return;
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
@@ -85,7 +87,7 @@ public class PlayerControl : MonoBehaviour
             prevDirection = direction;
         }
         direction = new Vector2(inputX, inputY);
-        
+       
     }
 
     void PlayerMove()

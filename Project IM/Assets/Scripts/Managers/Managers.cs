@@ -13,10 +13,12 @@ public class Managers : MonoBehaviour
     private IManager gameManager;
     private IManager dataManager = new DataManager();
     private IManager resourceManager = new ResourceManager();
+    private IManager poolManager = new PoolManager();
     public static StatManager StatManager { get { return Instance.statManager as StatManager; } }
     public static GameManager GameManager { get { return Instance.gameManager as GameManager; } }
     public static DataManager DataManager { get { return Instance.dataManager as DataManager; } }
     public static ResourceManager ResourceManager { get { return Instance.resourceManager as ResourceManager; } }
+    public static PoolManager PoolManager { get { return Instance.poolManager as PoolManager; } }
 
     void Awake() {
         Init();
@@ -39,6 +41,7 @@ public class Managers : MonoBehaviour
         string prefix = "Managers/";
         InitStatManager();              //statManager Initialize
         InitDataManager();              //DataManager Initialize
+        InitPoolManager();              //PoolManager Initialize
     }
 
     void InitDataManager()
@@ -49,5 +52,10 @@ public class Managers : MonoBehaviour
     void InitStatManager()
     {
         statManager.Init();
+    }
+
+    void InitPoolManager()
+    {
+        poolManager.Init();
     }
 }

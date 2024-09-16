@@ -18,6 +18,11 @@ public class ResourceManager : IManager
             Debug.LogWarning("Prefab " + path + " could not be loaded");
             return null;
         }
+
+        if (prefab.GetComponent<Poolable>() != null)
+        {
+            return Managers.PoolManager.Pop(prefab, parent).gameObject;
+        }
         GameObject go = GameObject.Instantiate(prefab, parent);
         go.name = prefab.name;
         return go;
@@ -26,6 +31,11 @@ public class ResourceManager : IManager
     public void Destroy(GameObject go)
     {
         if (go == null) return;
+        if (go.GetComponent<Poolable>() != null)
+        {
+            Managers.PoolManager.Push(go.GetComponent<Poolable>());
+            return;
+        }
         Object.Destroy(go);
     }
 
