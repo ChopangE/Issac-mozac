@@ -26,14 +26,14 @@ MonoBehaviour:
       Health: 100
       Damage: 10
       Speed: 5
-      AtkSpeed: 5
+      AtkSpeed: 1.3
     - Id: Mage
       Health: 100
       Damage: 10
       Speed: 4
-      AtkSpeed: 4
+      AtkSpeed: 0.8
     - Id: Warrior
       Health: 150
       Damage: 15
       Speed: 3
-      AtkSpeed: 2
+      AtkSpeed: 1

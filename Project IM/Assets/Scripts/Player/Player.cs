@@ -81,6 +81,12 @@ namespace Player
             Debug.Log(classes + " " + curHealth + " " + damage + " " + atkSpeed + " " + speed);
         }
 
-
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            IItem item = other.GetComponent<IItem>();
+            if (item == null) return;
+            item.Use();
+            
+        }
     }
 }
