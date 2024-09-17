@@ -17,6 +17,16 @@ public class BulletBase : MonoBehaviour
         playerControl = FindObjectOfType<PlayerControl>();
         
     }
+
+    void Start()
+    {
+        Init();
+    }
+
+    void Init()
+    {
+        damage = player.damage;
+    }
     // public void Init(Player.Player player, PlayerControl playerControl)
     // {
     //     this.player = player;
@@ -28,6 +38,5 @@ public class BulletBase : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable == null || other.CompareTag("Player")) return;
         damageable.GetDamage(damage);
-        Debug.Log("Hit");
     }
 }

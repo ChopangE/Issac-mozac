@@ -14,7 +14,10 @@ public class CheckDie : Conditional
 	
 	public override TaskStatus OnUpdate()
 	{
-		if(enemyBase.CurHealth > 0) return TaskStatus.Failure;
-		else return TaskStatus.Success;
+		if (enemyBase.CurHealth > 0)
+		{
+			return TaskStatus.Failure;
+		}
+		return TaskStatus.Success;
 	}
 }

@@ -251,9 +251,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1507889677
+  m_SortingLayer: 3
+  m_SortingOrder: 3
   m_Sprite: {fileID: -405198641, guid: f5859598503e2334581a794a8aa5b09a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
+  prevDirection: {x: 0, y: 0}
 --- !u!50 &269517874
 Rigidbody2D:
   serializedVersion: 4
@@ -687,13 +688,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 525851667541261514, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 525851667541261517, guid: 45647b4171a0fbf409688ae70957d583, type: 3}
       propertyPath: m_Name
-      value: Slime (1)
+      value: Slime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45647b4171a0fbf409688ae70957d583, type: 3}

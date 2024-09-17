@@ -24,7 +24,15 @@ public class ArrowBullet : BulletBase
     void Shoot()
     {
         rb.AddForce(speed * dir, ForceMode2D.Impulse);
-        DOVirtual.DelayedCall(1f, Dissaper);
+        DOVirtual.DelayedCall(1f, () => { Managers.ResourceManager.Destroy(gameObject);});
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable == null || other.CompareTag("Player")) return;
+        Managers.ResourceManager.Destroy(gameObject);
     }
 
     void Dissaper()

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class AttackBT : Action
 {
+    protected EnemyBase enemyBase;
+
     protected Animator anim;
     protected Collider2D coll;
     protected float damage;
@@ -14,6 +16,7 @@ public class AttackBT : Action
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        enemyBase = GetComponent<EnemyBase>();
     }
 
     public override void OnStart()

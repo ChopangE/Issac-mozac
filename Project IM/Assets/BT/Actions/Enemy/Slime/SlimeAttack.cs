@@ -8,6 +8,7 @@ using DG.Tweening;
 public class SlimeAttack : AttackBT
 {
     public SharedTransform target;
+    
     public override void OnStart()
     {
         base.OnStart();
@@ -15,7 +16,14 @@ public class SlimeAttack : AttackBT
         transform.DOMove(target.Value.position, 0.2f, false).OnComplete(
             () =>
             {
-                anim.Play("Slime");
+                if (enemyBase.CurHealth > 0)
+                {
+                    anim.Play("Slime");
+                }
+                else
+                {
+                    anim.Play("SlimeDie");
+                }
                 CircleCollider2D collider = coll as CircleCollider2D;
                 if (collider != null)
                 {

@@ -6,6 +6,7 @@ using Util;
 
 public class EnemyBase : MonoBehaviour, IDamageable
 {
+    protected Animator anim;
     public Define.EnemyType enemyType;
     public EnemyDataSO dataSO;
     private EnemyData data;
@@ -20,13 +21,19 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     void Init()
     {
+        anim = GetComponent<Animator>();
         data = dataSO.DataContainer.enemyDatas[(int)enemyType];
         CurHealth = data.Health;
     }
 
 
-    public void GetDamage(float damage)
+    public virtual void GetDamage(float damage)
     {
         CurHealth -= damage;
+    }
+
+    void Die()
+    {
+        Managers.ResourceManager.Destroy(gameObject);
     }
 }
