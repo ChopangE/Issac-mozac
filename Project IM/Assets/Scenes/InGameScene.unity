@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d64ce2949980429ae81e99dca651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerState: 0
   direction: {x: 0, y: 0}
   prevDirection: {x: 0, y: 0}
 --- !u!50 &269517874
@@ -599,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 269517875}
+  playerControl: {fileID: 0}
 --- !u!4 &993513111
 Transform:
   m_ObjectHideFlags: 0

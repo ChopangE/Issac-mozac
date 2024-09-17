@@ -64,14 +64,18 @@ namespace Player
         {
             Init();
         }
-        
+
+        void Update()
+        {
+            
+        }
         void Init()
         {
             //DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
-            Managers.DataManager.LoadCurrentPlayerData();
+            //Managers.DataManager.LoadCurrentPlayerData();
             pd = Managers.StatManager.Pd;
         }
-
+        
         void TetsDebug()
         {
             Debug.Log(classes + " " + curHealth + " " + damage + " " + atkSpeed + " " + speed);

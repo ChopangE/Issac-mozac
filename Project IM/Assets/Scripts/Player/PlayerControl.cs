@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    enum PlayerState {
+    public enum PlayerState {
         Idle, Run, Attack
     }
-    PlayerState playerState = PlayerState.Idle;
-    
+    public PlayerState playerState = PlayerState.Idle;
+
+
+    [Header("Player")] 
+    Player.Player player;
 
     [Header("Animation")]
     Animator anim;
-
     [Header("Movement")]
     Rigidbody2D rb;
     float moveSpeed = 4.0f;
@@ -28,10 +30,12 @@ public class PlayerControl : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerWeapon = GetComponent<PlayerWeapon>();
+        player = GetComponent<Player.Player>();
     }
     void Start()
     {
         isAttack = false;
+
     }
     void Update()
     {
@@ -69,15 +73,17 @@ public class PlayerControl : MonoBehaviour
     void AttackEnd()
     {
         isAttack = false;
+        anim.speed = 1.0f;
     }
     
     void GetInput() {
         if (Input.GetKeyDown(KeyCode.Z) && !isAttack)
         {
             isAttack = true;
-            Debug.Log("Shoot");
             rb.velocity = Vector2.zero;
             playerWeapon.StartAttack();
+            anim.speed = player.atkSpeed;
+            Debug.Log(player.atkSpeed);
         }
         
         if (isAttack) return;
