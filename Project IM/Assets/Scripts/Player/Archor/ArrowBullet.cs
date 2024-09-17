@@ -8,8 +8,9 @@ public class ArrowBullet : BulletBase
 {
     private float speed = 5f;
     private Vector3 dir;
-    void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         Init();
         Shoot();
     }
@@ -24,9 +25,10 @@ public class ArrowBullet : BulletBase
     void Shoot()
     {
         rb.AddForce(speed * dir, ForceMode2D.Impulse);
-        DOVirtual.DelayedCall(1f, () => { Managers.ResourceManager.Destroy(gameObject);});
+        // DOVirtual.DelayedCall(1f, () =>
+        // { Managers.ResourceManager.Destroy(gameObject); });
     }
-
+    
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);

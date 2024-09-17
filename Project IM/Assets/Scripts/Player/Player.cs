@@ -47,7 +47,7 @@ namespace Player
             get { return pd.Damage; }
             set { pd.Damage = value; }
         }
-
+        
         public float speed
         {
             get { return pd.Speed; }

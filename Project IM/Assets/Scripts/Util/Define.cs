@@ -19,6 +19,11 @@ namespace Util
        {
            Weapon, Enemy,
        }
+
+       public enum SceneType
+       {
+           UnKnown,MainMenu, InGame,
+       }
    } 
 }
 

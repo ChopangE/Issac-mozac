@@ -30,6 +30,7 @@ public class InGameViewModel : BaseViewModel
     void Init()
     {
         player = FindObjectOfType<Player.Player>();
+        HP = player.curHealth.ToString();
         MethodBinding();
     }
     void HpBinding(float value)

@@ -13,18 +13,20 @@ public class BulletBase : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<Player.Player>();
-        playerControl = FindObjectOfType<PlayerControl>();
-        
     }
 
-    void Start()
+    
+
+    public virtual void OnEnable()
     {
         Init();
     }
-
     void Init()
     {
+        // InGameScene inGameScene = Managers.SceneManager.CurrentScene as InGameScene;
+        // if(inGameScene == null) return;
+        player = FindObjectOfType<Player.Player>();
+        playerControl = FindObjectOfType<PlayerControl>();
         damage = player.damage;
     }
     // public void Init(Player.Player player, PlayerControl playerControl)
