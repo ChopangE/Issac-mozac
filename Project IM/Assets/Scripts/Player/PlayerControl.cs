@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     public enum PlayerState {
         Idle, Run, Attack
     }
-    public PlayerState playerState = PlayerState.Idle;
+    PlayerState playerState = PlayerState.Idle;
 
 
     [Header("Player")] 

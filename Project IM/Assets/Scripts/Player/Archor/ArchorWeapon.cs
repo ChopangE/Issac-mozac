@@ -9,7 +9,7 @@ public class ArchorWeapon : PlayerWeapon
     {
         SpawnArrow();
     }
-
+    
     private void SpawnArrow()
     {
         GameObject bullet = Managers.ResourceManager.InstantiatePrefab("Weapon/Arrow", gameObject.transform);

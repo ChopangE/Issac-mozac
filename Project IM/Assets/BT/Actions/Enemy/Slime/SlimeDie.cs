@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using DG.Tweening;
 
 public class SlimeDie : Die
 {
@@ -10,6 +11,7 @@ public class SlimeDie : Die
     {
         base.OnStart();
         anim.Play("SlimeDie");
+        
     }
     
     

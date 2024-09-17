@@ -17,7 +17,7 @@ namespace Util
 
        public enum PrefabType
        {
-           Weapon, Enemy,
+           Weapon, Enemy, Item,
        }
 
        public enum SceneType

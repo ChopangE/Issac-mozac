@@ -15,6 +15,7 @@ namespace Player
     public class Player : MonoBehaviour, IDamageable
     {
         private PlayerData pd;
+        private Animator anim;
         public Define.Classes classes
         {
             get { return (Define.Classes)Enum.Parse(typeof(Define.Classes), pd.Id); }
@@ -57,6 +58,7 @@ namespace Player
         public void GetDamage(float damage)
         {
             curHealth -= damage;
+            anim.SetTrigger("Hit");
             Debug.Log(curHealth);
         }
 
@@ -71,8 +73,7 @@ namespace Player
         }
         void Init()
         {
-            //DOVirtual.DelayedCall(3f, Managers.DataManager.LoadCurrentPlayerData).OnComplete(TetsDebug); //임시코드
-            //Managers.DataManager.LoadCurrentPlayerData();
+            anim = GetComponent<Animator>();
             pd = Managers.StatManager.Pd;
         }
         

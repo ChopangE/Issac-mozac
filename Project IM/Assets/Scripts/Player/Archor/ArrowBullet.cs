@@ -11,9 +11,9 @@ public class ArrowBullet : BulletBase
     Tween tween;
     public override void OnEnable()
     {
-        tween.Kill();
         base.OnEnable();
-       
+        tween.Kill();
+        rb.velocity = Vector2.zero;
         tween = DOVirtual.DelayedCall(1f, () =>
         {
             if (gameObject.activeSelf)
