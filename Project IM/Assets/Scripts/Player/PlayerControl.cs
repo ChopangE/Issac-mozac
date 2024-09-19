@@ -2,28 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public abstract class PlayerControl : MonoBehaviour
 {
     public enum PlayerState {
         Idle, Run, Attack
     }
-    PlayerState playerState = PlayerState.Idle;
+    protected PlayerState playerState = PlayerState.Idle;
 
 
     [Header("Player")] 
-    Player.Player player;
+    protected Player.Player player;
 
     [Header("Animation")]
-    Animator anim;
+    protected Animator anim;
     [Header("Movement")]
-    Rigidbody2D rb;
-    float moveSpeed = 4.0f;
+    protected Rigidbody2D rb;
     public Vector2 direction;
     public Vector2 prevDirection;
 
     [Header("Attack")] 
-    PlayerWeapon playerWeapon;
-    bool isAttack;
+    protected PlayerWeapon playerWeapon;
+    protected bool isAttack;
 
 
     void Awake() {
@@ -70,21 +69,23 @@ public class PlayerControl : MonoBehaviour
         
     }
 
-    void AttackEnd()
+    public void AttackEnd()
     {
         isAttack = false;
         anim.speed = 1.0f;
     }
     
-    void GetInput() {
-        if (Input.GetKeyDown(KeyCode.Z) && !isAttack)
-        {
-            isAttack = true;
-            rb.velocity = Vector2.zero;
-            playerWeapon.StartAttack();
-            anim.speed = player.atkSpeed;
-            Debug.Log(player.atkSpeed);
-        }
+    void GetInput()
+    {
+        //AttackMethod는 반드시 아래 코드를 포함하고 있어야함.
+        AttackMethod();
+        // if (Input.GetKeyDown(KeyCode.Z) && !isAttack)
+        // {
+        //     isAttack = true;
+        //     rb.velocity = Vector2.zero;
+        //     playerWeapon.StartAttack();
+        //     anim.speed = player.atkSpeed;
+        // }
         
         if (isAttack) return;
         float inputX = Input.GetAxisRaw("Horizontal");
@@ -96,10 +97,11 @@ public class PlayerControl : MonoBehaviour
        
     }
 
+    public abstract void AttackMethod();
     void PlayerMove()
     {
         direction.Normalize();
-        rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        rb.velocity = new Vector2(direction.x * player.speed, direction.y * player.speed);
     }
     void SetAnimation() {
         anim.SetFloat("PrevMoveX", prevDirection.x);

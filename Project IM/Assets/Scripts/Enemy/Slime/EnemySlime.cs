@@ -7,6 +7,8 @@ public class EnemySlime : EnemyBase
     public override void GetDamage(float damage)
     {
         base.GetDamage(damage);
-        anim.Play("SlimeHit");
+        if(CurHealth > 0 ) 
+            anim.Play("SlimeHit");
+
     }
 }

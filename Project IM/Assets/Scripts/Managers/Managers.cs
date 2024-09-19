@@ -56,7 +56,7 @@ public class Managers : MonoBehaviour
 
     void InitDataManager()
     {
-        DataManager.Init();
+        dataManager.Init();
     }
 
     void InitStatManager()

@@ -12,4 +12,5 @@ public abstract class PlayerWeapon : MonoBehaviour
         player = GetComponent<Player.Player>();
         playerControl = GetComponent<PlayerControl>();
     }
+    
 }

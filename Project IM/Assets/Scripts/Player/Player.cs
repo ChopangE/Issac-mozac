@@ -15,6 +15,7 @@ namespace Player
     public class Player : MonoBehaviour, IDamageable
     {
         private PlayerData pd;
+        private PlayerControl playerControl;
         private Animator anim;
         public Define.Classes classes
         {
@@ -58,10 +59,11 @@ namespace Player
         public void GetDamage(float damage)
         {
             curHealth -= damage;
+            playerControl.AttackEnd();
             anim.SetTrigger("Hit");
             Debug.Log(curHealth);
         }
-
+        
         void Start()
         {
             Init();
@@ -74,6 +76,7 @@ namespace Player
         void Init()
         {
             anim = GetComponent<Animator>();
+            playerControl = GetComponent<PlayerControl>();
             pd = Managers.StatManager.Pd;
         }
         
