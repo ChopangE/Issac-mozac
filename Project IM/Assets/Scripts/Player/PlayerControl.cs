@@ -100,8 +100,10 @@ public abstract class PlayerControl : MonoBehaviour
     public abstract void AttackMethod();
     void PlayerMove()
     {
-        direction.Normalize();
-        rb.velocity = new Vector2(direction.x * player.speed, direction.y * player.speed);
+        //direction.Normalize();
+        Vector2 tmpDir = direction;
+        tmpDir.Normalize();
+        rb.velocity = new Vector2(tmpDir.x * player.speed, tmpDir.y * player.speed);
     }
     void SetAnimation() {
         anim.SetFloat("PrevMoveX", prevDirection.x);

@@ -23,10 +23,11 @@ public class MageController : PlayerControl
             }
         }
         
-        if (!isCasting && anim.speed == 0)        //버그상황처리
-        {
-            CastingEnd();
-        }
+        // if (!isCasting && anim.speed == 0)        //버그상황처리
+        // {
+        //     Debug.Log("버그처리");
+        //     CastingEnd();
+        // }
         
         if (Input.GetKeyDown(KeyCode.Z) && !isAttack )
         {
@@ -47,10 +48,12 @@ public class MageController : PlayerControl
         anim.speed = player.atkSpeed;
         isCasting = false;
         castingTimer = 0f;
+        GoAttack();
     }
     private void AnimStop()
     {
         anim.speed = 0.0f;
+        isCasting = true;
     }
 
     private void GoAttack()

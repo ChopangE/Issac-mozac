@@ -16,4 +16,6 @@ public class ArchorController : PlayerControl
             anim.speed = player.atkSpeed;
         }
     }
+
+    
 }
