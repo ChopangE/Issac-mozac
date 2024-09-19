@@ -5,14 +5,20 @@ using UnityEngine;
 public class MageController : PlayerControl
 {
     private bool isCasting = false;
-    public float castingTimer { get; private set; } = 0.0f;
+    private const float MaxChargingTime = 3f;
+    public float castingTimer
+    {
+        get { return (playerWeapon as MageWeapon).CastingTime;}
+        set { (playerWeapon as MageWeapon).CastingTime = value; }
+    }
 
     public override void AttackMethod()                 //PlayerControl의 Update문안에서 호출되는 함수
     {
+        
         if (isCasting)
         {
             castingTimer += Time.deltaTime;
-            if (castingTimer >= 5.0f)
+            if (castingTimer >= MaxChargingTime)
             {
                 CastingEnd();
             }

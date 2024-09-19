@@ -5,6 +5,9 @@ using UnityEngine;
 public class MageWeapon : PlayerWeapon
 {
     private const float ShootPower = 5f;
+
+    public float CastingTime { get; set; } = 0.0f;
+
     public override void StartAttack()
     {
         SpawnFire();
