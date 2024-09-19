@@ -5,7 +5,7 @@ public abstract class PlayerWeapon : MonoBehaviour
 {
     protected Player.Player player;
     protected PlayerControl playerControl;
-    public abstract void StartAttack();
+    public abstract void StartAttacking(float radius = 0);
 
     public virtual void Start()
     {

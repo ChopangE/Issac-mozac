@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArchorWeapon : PlayerWeapon
 {
     private const float ShootPower = 5f;
-    public override void StartAttack()
+    public override void StartAttacking(float radius = 0)
     {
         SpawnArrow();
     }

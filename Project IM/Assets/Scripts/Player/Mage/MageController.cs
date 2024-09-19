@@ -5,13 +5,12 @@ using UnityEngine;
 public class MageController : PlayerControl
 {
     private bool isCasting = false;
+    
     private const float MaxChargingTime = 3f;
-    public float castingTimer
-    {
-        get { return (playerWeapon as MageWeapon).CastingTime;}
-        set { (playerWeapon as MageWeapon).CastingTime = value; }
-    }
-
+    
+    private float currentFireBallRadius;
+    
+    private float castingTimer = 0.0f;
     public override void AttackMethod()                 //PlayerControl의 Update문안에서 호출되는 함수
     {
         
@@ -23,11 +22,12 @@ public class MageController : PlayerControl
                 CastingEnd();
             }
         }
-
-        if (!isCasting && anim.speed == 0)        //버그상황
+        
+        if (!isCasting && anim.speed == 0)        //버그상황처리
         {
             CastingEnd();
         }
+        
         if (Input.GetKeyDown(KeyCode.Z) && !isAttack )
         {
             isAttack = true;
@@ -43,6 +43,7 @@ public class MageController : PlayerControl
 
     private void CastingEnd()
     {
+        currentFireBallRadius = castingTimer;
         anim.speed = player.atkSpeed;
         isCasting = false;
         castingTimer = 0f;
@@ -54,7 +55,8 @@ public class MageController : PlayerControl
 
     private void GoAttack()
     {
-        playerWeapon.StartAttack();
+        playerWeapon.StartAttacking(currentFireBallRadius);
+        currentFireBallRadius = 0;
     }
 }
 

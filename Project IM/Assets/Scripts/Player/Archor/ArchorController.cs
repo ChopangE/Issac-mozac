@@ -12,7 +12,7 @@ public class ArchorController : PlayerControl
         {
             isAttack = true;
             rb.velocity = Vector2.zero;
-            playerWeapon.StartAttack();
+            playerWeapon.StartAttacking();
             anim.speed = player.atkSpeed;
         }
     }

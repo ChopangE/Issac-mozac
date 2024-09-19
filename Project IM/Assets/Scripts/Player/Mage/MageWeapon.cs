@@ -6,27 +6,30 @@ public class MageWeapon : PlayerWeapon
 {
     private const float ShootPower = 5f;
 
-    public float CastingTime { get; set; } = 0.0f;
+   
 
-    public override void StartAttack()
+    public override void StartAttacking(float radius = 0)
     {
-        SpawnFire();
+        SpawnFire(radius);
     }
     
-    private void SpawnFire()
+    private void SpawnFire(float radius)
     {
         GameObject bullet = Managers.ResourceManager.InstantiatePrefab("Weapon/FireBall", gameObject.transform);
         if (bullet == null) return;
         FireBallBullet bb = bullet.GetComponent<FireBallBullet>();
         if (bb == null) return;
-        bb.InitDamage(player.damage);
-        bb.Init(playerControl as MageController);
+        float UpDegree = (1 + radius / 3f);
+        bb.InitDamage(player.damage * UpDegree);
+        bb.transform.localScale = Vector3.one * UpDegree;
         bullet.transform.position = player.transform.position;
         Vector3 dir = playerControl.direction.magnitude > 0 ? playerControl.direction : playerControl.prevDirection;
         bullet.transform.rotation = Quaternion.FromToRotation(Vector3.down,dir);
         bullet.GetComponent<Rigidbody2D>().AddForce(ShootPower * dir, ForceMode2D.Impulse);
 
     }
+
+    
         
     
 }
