@@ -16,6 +16,11 @@ public class InGameScene : BaseScene
         playerControl = FindObjectOfType<PlayerControl>();
     }
 
+    void Start()
+    {
+        Managers.UIManager.OpenPage<InGameViewModel>();
+    }
+
     public override void Clear()
     { }
 }

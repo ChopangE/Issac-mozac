@@ -22,7 +22,7 @@ namespace Util
 
        public enum SceneType
        {
-           UnKnown,MainMenu, InGame,
+           UnKnown, MainMenu, InGame,
        }
    } 
 }

@@ -35,13 +35,12 @@ public class MageController : PlayerControl
             isCasting = true;
             rb.velocity = Vector2.zero;
         }
-        
         if (Input.GetKeyUp(KeyCode.Z) && isCasting )
         {
             CastingEnd();
         }
     }
-
+    
     private void CastingEnd()
     {
         currentFireBallRadius = castingTimer;

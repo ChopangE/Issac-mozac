@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ArchorController : PlayerControl
 {
-    
-
     public override void AttackMethod()
     {
         if (Input.GetKeyDown(KeyCode.Z) && !isAttack)
@@ -16,6 +14,8 @@ public class ArchorController : PlayerControl
             anim.speed = player.atkSpeed;
         }
     }
+
+    
 
     
 }

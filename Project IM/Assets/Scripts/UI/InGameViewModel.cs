@@ -42,6 +42,12 @@ public class InGameViewModel : BaseViewModel
     {
         player.healthEvent += HpBinding;
     }
+
+    [Binding]
+    public void SpawnSlime()
+    {
+        Managers.ResourceManager.InstantiatePrefab("Enemy/Slime");
+    }
 }
 
 

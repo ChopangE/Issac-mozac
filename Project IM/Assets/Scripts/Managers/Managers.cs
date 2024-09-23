@@ -15,13 +15,15 @@ public class Managers : MonoBehaviour
     private IManager resourceManager = new ResourceManager();
     private IManager poolManager = new PoolManager();
     private IManager sceneManager = new SceneManager_();
+    private IManager uiManager = new UIManager();
     public static StatManager StatManager { get { return Instance.statManager as StatManager; } }
     public static GameManager GameManager { get { return Instance.gameManager as GameManager; } }
     public static DataManager DataManager { get { return Instance.dataManager as DataManager; } }
     public static ResourceManager ResourceManager { get { return Instance.resourceManager as ResourceManager; } }
     public static PoolManager PoolManager { get { return Instance.poolManager as PoolManager; } }
     public static SceneManager_ SceneManager { get { return Instance.sceneManager as SceneManager_; } }
-
+    public static UIManager UIManager { get { return Instance.uiManager as UIManager; } }
+    
     void Awake() {
         Init();
         Create();
@@ -47,11 +49,12 @@ public class Managers : MonoBehaviour
     }
     void Create()
     {
-        string prefix = "Managers/";
+        string prefix = "Managers/";    //MonoBehavior를 가진 Manager는 여기서 Create
         InitStatManager();              //statManager Initialize
         InitDataManager();              //DataManager Initialize
         InitPoolManager();              //PoolManager Initialize
         InitSceneManager();             //SceneManager Initialize
+        InitUIManager();
     }
 
     void InitDataManager()
@@ -72,5 +75,10 @@ public class Managers : MonoBehaviour
     void InitSceneManager()
     {
         sceneManager.Init();
+    }
+
+    void InitUIManager()
+    {
+        uiManager.Init();
     }
 }

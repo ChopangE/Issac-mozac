@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameData;
@@ -23,9 +24,12 @@ public class EnemyBase : MonoBehaviour, IDamageable
     {
         anim = GetComponent<Animator>();
         data = dataSO.DataContainer.enemyDatas[(int)enemyType];
-        CurHealth = data.Health;
     }
 
+    private void OnEnable()
+    {
+        CurHealth = data.Health;
+    }
 
     public virtual void GetDamage(float damage)
     {

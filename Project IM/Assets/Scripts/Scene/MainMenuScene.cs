@@ -14,6 +14,5 @@ public class MainMenuScene : BaseScene
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
     }
 }
