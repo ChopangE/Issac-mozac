@@ -132,10 +132,13 @@ public abstract class PlayerControl : MonoBehaviourPun, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(anim.speed);
+            stream.SendNext(isAttack);
         }
         else
         {
             anim.speed = (float)stream.ReceiveNext();
+            isAttack = (bool)stream.ReceiveNext();
+
         }
     }
 }
