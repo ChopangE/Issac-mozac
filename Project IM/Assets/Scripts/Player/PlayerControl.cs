@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public abstract class PlayerControl : MonoBehaviour
+public abstract class PlayerControl : MonoBehaviourPun
 {
     public enum PlayerState {
         Idle, Run, Attack
@@ -38,6 +39,7 @@ public abstract class PlayerControl : MonoBehaviour
     }
     void Update()
     {
+        if (!photonView.IsMine) return;
         GetInput();
         SetStatus();
         switch (playerState) {
