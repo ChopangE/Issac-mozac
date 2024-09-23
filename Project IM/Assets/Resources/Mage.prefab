@@ -13,19 +13,19 @@ GameObject:
   - component: {fileID: 75172936052237594}
   - component: {fileID: 75172936052237573}
   - component: {fileID: 75172936052237572}
-  - component: {fileID: 75172936052237575}
   - component: {fileID: 75172936052237593}
   - component: {fileID: 4948328388214837604}
   - component: {fileID: -6313024981371251480}
   - component: {fileID: -6261065940661058691}
   - component: {fileID: -2579620732596499753}
+  - component: {fileID: 8333382969879833269}
   m_Layer: 3
   m_Name: Mage
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &75172936052237592
 Transform:
   m_ObjectHideFlags: 0
@@ -151,18 +151,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.006894827, y: 0.027577668}
   m_Size: {x: 0.43465757, y: 0.558757}
   m_Direction: 0
---- !u!114 &75172936052237575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75172936052237597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1605978d6246f54428098495676672b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &75172936052237593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +251,21 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 4948328388214837604}
   - {fileID: -6313024981371251480}
   - {fileID: -6261065940661058691}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8333382969879833269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75172936052237597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beb9741c0ca04f43a98e37c8276d594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

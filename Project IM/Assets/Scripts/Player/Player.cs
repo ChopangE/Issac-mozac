@@ -15,8 +15,8 @@ namespace Player
     public class Player : MonoBehaviour, IDamageable
     {
         private PlayerData pd;
-        private PlayerControl playerControl;
-        private Animator anim;
+        protected PlayerControl playerControl;
+        protected Animator anim;
         public Define.Classes classes
         {
             get { return (Define.Classes)Enum.Parse(typeof(Define.Classes), pd.Id); }
@@ -56,12 +56,12 @@ namespace Player
             set { pd.Speed = value; }
         }
 
-        public void GetDamage(float damage)
+        public virtual void GetDamage(float damage)
         {
             curHealth -= damage;
             playerControl.AttackEnd();
             anim.SetTrigger("Hit");
-            Debug.Log(curHealth);
+            
         }
         
         void Start()

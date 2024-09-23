@@ -17,17 +17,13 @@ public class MageController : PlayerControl
         if (isCasting)
         {
             castingTimer += Time.deltaTime;
-            if (castingTimer >= MaxChargingTime)
+            if (castingTimer >= MaxChargingTime)        //성공적
             {
+                currentFireBallRadius = castingTimer;
                 CastingEnd();
+                GoAttack();
             }
         }
-        
-        // if (!isCasting && anim.speed == 0)        //버그상황처리
-        // {
-        //     Debug.Log("버그처리");
-        //     CastingEnd();
-        // }
         
         if (Input.GetKeyDown(KeyCode.Z) && !isAttack )
         {
@@ -35,19 +31,19 @@ public class MageController : PlayerControl
             isCasting = true;
             rb.velocity = Vector2.zero;
         }
-        if (Input.GetKeyUp(KeyCode.Z) && isCasting )
+        else if (Input.GetKeyUp(KeyCode.Z) && isCasting )       //성공적
         {
+            currentFireBallRadius = castingTimer;
             CastingEnd();
+            GoAttack();
         }
     }
     
-    private void CastingEnd()
+    public void CastingEnd()
     {
-        currentFireBallRadius = castingTimer;
         anim.speed = player.atkSpeed;
         isCasting = false;
         castingTimer = 0f;
-        GoAttack();
     }
     private void AnimStop()
     {

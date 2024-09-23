@@ -25,6 +25,7 @@ public class MageWeapon : PlayerWeapon
         bullet.transform.position = player.transform.position;
         Vector3 dir = playerControl.direction.magnitude > 0 ? playerControl.direction : playerControl.prevDirection;
         bullet.transform.rotation = Quaternion.FromToRotation(Vector3.down,dir);
+        dir.Normalize();
         bullet.GetComponent<Rigidbody2D>().AddForce(ShootPower * dir, ForceMode2D.Impulse);
 
     }
