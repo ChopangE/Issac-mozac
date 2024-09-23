@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public abstract class PlayerControl : MonoBehaviourPun
+public abstract class PlayerControl : MonoBehaviourPun, IPunObservable
 {
     public enum PlayerState {
         Idle, Run, Attack
@@ -125,5 +125,17 @@ public abstract class PlayerControl : MonoBehaviourPun
         }
         if(direction.magnitude > 0.2f)playerState = PlayerState.Run;
         else playerState = PlayerState.Idle;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(anim.speed);
+        }
+        else
+        {
+            anim.speed = (float)stream.ReceiveNext();
+        }
     }
 }
