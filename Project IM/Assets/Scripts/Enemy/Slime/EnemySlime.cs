@@ -8,8 +8,6 @@ public class EnemySlime : EnemyBase
     {
         base.GetDamage(damage);
         if(CurHealth > 0 ) 
-            Debug.Log("Hit");
             anim.Play("SlimeHit");
-
     }
 }
