@@ -35,6 +35,8 @@ public class CanAttack : Conditional
 
             return true;
         }
+
+        return false;
         // Vector2 direction = targetTransform.position - transform.position;
         // float dist = direction.magnitude;
         // return Vector2.Angle(direction, transform.forward) < fieldOfViewAngle && dist <= distance;

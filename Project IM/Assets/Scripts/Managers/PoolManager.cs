@@ -33,7 +33,7 @@ public class PoolManager : IManager
         {
             //GameObject go = Object.Instantiate<GameObject>(Original);
             Debug.Log(Original.name);
-            GameObject go = PhotonNetwork.Instantiate(Original.name, Vector3.zero, Quaternion.identity);
+            GameObject go = PhotonNetwork.Instantiate(Original.name, Vector3.zero, Quaternion.identity);   //네트워크 버전
             go.name = Original.name;
             return go.GetComponent<Poolable>();
         }
