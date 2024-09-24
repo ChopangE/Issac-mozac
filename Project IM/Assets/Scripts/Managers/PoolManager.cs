@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using Interface;
+using Photon.Pun;
 using UnityEngine;
 using Util;
 
@@ -30,7 +31,9 @@ public class PoolManager : IManager
 
         Poolable Create()
         {
-            GameObject go = Object.Instantiate<GameObject>(Original);
+            //GameObject go = Object.Instantiate<GameObject>(Original);
+            Debug.Log(Original.name);
+            GameObject go = PhotonNetwork.Instantiate(Original.name, Vector3.zero, Quaternion.identity);
             go.name = Original.name;
             return go.GetComponent<Poolable>();
         }

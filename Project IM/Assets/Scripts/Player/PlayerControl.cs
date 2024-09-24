@@ -39,12 +39,7 @@ public abstract class PlayerControl : MonoBehaviourPun, IPunObservable
     }
     void Update()
     {
-        if (!photonView.IsMine)
-        {
-            Debug.Log(anim.speed);
-
-            return;
-        }
+        if (!photonView.IsMine) return;
         GetInput();
         SetStatus();
         switch (playerState) {
