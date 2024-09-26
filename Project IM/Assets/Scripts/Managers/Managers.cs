@@ -44,7 +44,7 @@ public class Managers : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(SceneManager.CurrentScene.gameObject.name);
+            Debug.Log(StatManager.Classes.ToString());
         }
     }
     void Create()

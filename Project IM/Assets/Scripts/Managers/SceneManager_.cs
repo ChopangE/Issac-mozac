@@ -26,6 +26,7 @@ public class SceneManager_ : IManager
 
     public void Init()
     {
+        CurrentScene = GameObject.FindObjectOfType<BaseScene>();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 }
