@@ -12,6 +12,9 @@ public class InGameScene : BaseScene
     {
         base.Init();
         SceneType = Define.SceneType.InGame;
+        string className = Managers.StatManager.Classes.ToString();
+        if (className == "None") className = Define.Classes.Archer.ToString();
+        Managers.ResourceManager.InstantiatePrefab("Player/" + className);
         player = FindObjectOfType<Player.Player>();
         playerControl = FindObjectOfType<PlayerControl>();
     }

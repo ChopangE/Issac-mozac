@@ -7,7 +7,7 @@ namespace Util
    public class Define 
    {
        public enum Classes {
-           Archor, Mage, Warrior, None
+           Archer, Mage, Warrior, None
        }
 
        public enum EnemyType

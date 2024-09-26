@@ -8,6 +8,7 @@ public abstract class PlayerControl : MonoBehaviourPun, IPunObservable
     public enum PlayerState {
         Idle, Run, Attack
     }
+    
     protected PlayerState playerState = PlayerState.Idle;
 
 
@@ -39,7 +40,7 @@ public abstract class PlayerControl : MonoBehaviourPun, IPunObservable
     }
     void Update()
     {
-        if (!photonView.IsMine) return;
+        //if (!photonView.IsMine) return;
         GetInput();
         SetStatus();
         switch (playerState) {

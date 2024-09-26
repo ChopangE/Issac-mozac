@@ -76,7 +76,9 @@ public class InGameViewModel : BaseViewModel
     [Binding]
     public void SpawnSlime()
     {
-        Managers.ResourceManager.InstantiatePrefab("Slime");
+        //Managers.ResourceManager.InstantiatePrefab("Slime");
+        Managers.ResourceManager.InstantiatePrefab("Enemy/Slime");
+
     }
 }
 

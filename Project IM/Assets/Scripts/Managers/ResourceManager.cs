@@ -12,8 +12,9 @@ public class ResourceManager : IManager
 
     public GameObject InstantiatePrefab(string path, Transform parent = null)
     {
-        //GameObject prefab = Load<GameObject>("Prefabs/" + path);
-        GameObject prefab = Load<GameObject>(path);
+        GameObject prefab = Load<GameObject>("Prefabs/" + path);
+        Debug.Log(path);
+        //GameObject prefab = Load<GameObject>(path);
         if (prefab == null)
         {
             Debug.LogWarning("Prefab " + path + " could not be loaded");
