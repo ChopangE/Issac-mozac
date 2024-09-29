@@ -20,7 +20,6 @@ public class ArrowBullet : BulletBase
             {
                 Managers.ResourceManager.Destroy(gameObject);
             }
-
         });
     }
     

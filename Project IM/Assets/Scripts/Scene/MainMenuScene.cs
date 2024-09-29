@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,13 @@ public class MainMenuScene : BaseScene
         SceneType = Define.SceneType.MainMenu;
     }
 
+    private void Start()
+    {
+        Managers.UIManager.OpenPage<MainMenuViewModel>();
+    }
+
     public override void Clear()
     {
+        Managers.UIManager.CloseAllPages();
     }
 }

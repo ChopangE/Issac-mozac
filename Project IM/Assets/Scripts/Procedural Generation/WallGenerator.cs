@@ -16,6 +16,12 @@ public static class WallGenerator
     
     }
 
+    public static void CreateWallsNoPaint(HashSet<Vector2Int> floorPositions)
+    {
+        var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionList);
+        floorPositions.UnionWith(basicWallPositions);
+
+    }
     private static HashSet<Vector2Int> FindWallsInDirections(HashSet<Vector2Int> floorPositions, List<Vector2Int> directionList)
     {
         HashSet<Vector2Int> wallPositions = new HashSet<Vector2Int>(); 
