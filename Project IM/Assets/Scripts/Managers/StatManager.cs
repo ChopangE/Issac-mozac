@@ -60,7 +60,7 @@ public class StatManager : IManager
     public void Init()              
     {
         playerData = Resources.Load<PlayerDataSO>("Data/PlayerDataSO");
-        classes = Define.Classes.Mage;   //임시코드 캐릭터 선택되었다고 가정
-        RefreshData();                      //임시코드 나중에 Init에서 따로 뺴야됨 캐릭터 선택후 호출하면됨
+        //classes = Define.Classes.Mage;   //임시코드 캐릭터 선택되었다고 가정
+        //RefreshData();                      //임시코드 나중에 Init에서 따로 뺴야됨 캐릭터 선택후 호출하면됨
     }
 }

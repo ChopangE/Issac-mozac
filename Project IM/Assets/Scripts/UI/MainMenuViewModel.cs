@@ -12,19 +12,16 @@ public class MainMenuViewModel : BaseViewModel
     public void SelectArcher()
     {
         Managers.StatManager.Classes = Define.Classes.Archer;
-        CallInGameScene();
-        
+        Managers.StatManager.RefreshData();
+        Managers.SceneManager.LoadScene(Define.SceneType.InGame);
     }
     
     [Binding]
     public void SelectMage(){
         Managers.StatManager.Classes = Define.Classes.Mage;
-        CallInGameScene();
-    }
-
-    public void CallInGameScene()
-    {
+        Managers.StatManager.RefreshData();
         Managers.SceneManager.LoadScene(Define.SceneType.InGame);
-
     }
+
+    
 }

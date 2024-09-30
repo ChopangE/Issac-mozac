@@ -14,7 +14,7 @@ public class InGameScene : BaseScene
         SceneType = Define.SceneType.InGame;
         string className = Managers.StatManager.Classes.ToString();
         //캐릭터 선택창에서 Managers.StatManager.Classes를 선택하고 넘어옴
-        if (className == "None") className = Define.Classes.Mage.ToString();  //에러상황 처리
+        if (className == "None") className = Define.Classes.Archer.ToString();  //에러상황 처리
         Managers.ResourceManager.InstantiatePrefab("Player/" + className);
         player = FindObjectOfType<Player.Player>();
         playerControl = FindObjectOfType<PlayerControl>();

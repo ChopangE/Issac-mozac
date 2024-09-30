@@ -68,10 +68,9 @@ namespace Player
         {
             Init();
         }
-
         void Update()
         {
-            
+            Debug.Log(pd.Speed);
         }
         void Init()
         {
