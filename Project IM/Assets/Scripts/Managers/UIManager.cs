@@ -11,7 +11,6 @@ public class UIManager : IManager
     [SerializeField]
     private CanvasGroup _pageGroup = null;
     private List<BaseViewModel> _uiPageList = new ();
-        
     public CanvasGroup PageGroup => _pageGroup;
     public int PageCount => _uiPageList.Count;
         
