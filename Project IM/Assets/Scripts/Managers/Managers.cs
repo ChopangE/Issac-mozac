@@ -16,6 +16,9 @@ public class Managers : MonoBehaviour
     private IManager poolManager = new PoolManager();
     private IManager sceneManager = new SceneManager_();
     private IManager uiManager = new UIManager();
+    private IManager mapManager;
+
+    
     public static StatManager StatManager { get { return Instance.statManager as StatManager; } }
     public static GameManager GameManager { get { return Instance.gameManager as GameManager; } }
     public static DataManager DataManager { get { return Instance.dataManager as DataManager; } }
@@ -23,7 +26,8 @@ public class Managers : MonoBehaviour
     public static PoolManager PoolManager { get { return Instance.poolManager as PoolManager; } }
     public static SceneManager_ SceneManager { get { return Instance.sceneManager as SceneManager_; } }
     public static UIManager UIManager { get { return Instance.uiManager as UIManager; } }
-    
+    public static MapManager MapManager { get { return Instance.mapManager as MapManager; } }
+
     void Awake() {
         Init();
         Create();
@@ -55,6 +59,13 @@ public class Managers : MonoBehaviour
         InitPoolManager();              //PoolManager Initialize
         InitSceneManager();             //SceneManager Initialize
         InitUIManager();
+        InitMapManager();
+    }
+
+    void InitMapManager()
+    {
+        mapManager = ResourceManager.InstantiatePrefab("Managers/MapManager", transform).GetComponent<IManager>();
+        mapManager.Init();
     }
 
     void InitDataManager()

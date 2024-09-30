@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public static class WallGenerator
@@ -16,9 +17,26 @@ public static class WallGenerator
     
     }
 
-    public static void CreateWallsNoPaint(HashSet<Vector2Int> floorPositions)
+    public static void CreateWallsNoPaint(HashSet<Vector2Int> floorPositions, TilemapVisualizer tilemapVisualizer)
     {
         var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionList);
+        foreach(var position in basicWallPositions)
+        {
+            bool isWall = false;
+            foreach (var direction in Direction2D.cardinalDirectionList)
+            {
+                if (basicWallPositions.Contains(position + direction) == false &&
+                    floorPositions.Contains(position + direction) == false)
+                {
+                    isWall = true;
+                    break;
+                }
+            }
+            if (isWall)
+            {
+                tilemapVisualizer.PaintSingleBasicWall(position); 
+            }
+        }
         floorPositions.UnionWith(basicWallPositions);
 
     }
