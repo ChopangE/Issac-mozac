@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         data = dataSO.DataContainer.enemyDatas[(int)enemyType];
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         CurHealth = data.Health;
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySlime : EnemyBase
 {
+    
     public override void GetDamage(float damage)
     {
         base.GetDamage(damage);

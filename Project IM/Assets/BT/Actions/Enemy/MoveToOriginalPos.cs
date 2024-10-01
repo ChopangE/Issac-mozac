@@ -2,15 +2,21 @@ using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class MoveToOriginalPos : Action
 {
-    Vector3 originalPos;
+    public Vector3 originalPos;
     public float speed;
-    public override void OnAwake() {
+    public override void OnStart() {
         originalPos = transform.position;
+    }
+
+    public override void OnReset()
+    {
+        base.OnReset();
     }
 
     public override TaskStatus OnUpdate() {

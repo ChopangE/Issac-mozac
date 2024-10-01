@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class InGameViewModel : BaseViewModel
 {
     private Player.Player player;
-
+    
     
     private string HP_;
     [Binding]
