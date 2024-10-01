@@ -17,7 +17,8 @@ public class InGameScene : BaseScene
     {
         base.Init();
         SceneType = Define.SceneType.InGame;
-        camera = FindObjectOfType<CinemachineVirtualCamera>();
+        camera = FindObjectOfType<CinemachineVirtualCamera>();   
+        
         CreateStage();
     }
 
@@ -30,6 +31,7 @@ public class InGameScene : BaseScene
         string className = SelectCharacter();   //캐릭터 정보
         MapGenerator();                         //맵생성
         SpawnPlayer(className);                 //player생성
+        
         camera.Follow = player.transform;       //카메라 설정
     }
     
@@ -75,6 +77,7 @@ public class InGameScene : BaseScene
     
     public override void Clear()
     {
+        Managers.PoolManager.Clear();
         Managers.UIManager.CloseAllPages();
     }
 }
