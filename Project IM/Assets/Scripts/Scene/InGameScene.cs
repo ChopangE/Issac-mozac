@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
+using Cinemachine;
+using Photon.Pun.Demo.Cockpit;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,15 +12,16 @@ public class InGameScene : BaseScene
 {
     public Player.Player player;
     public PlayerControl playerControl;
-    
+    private CinemachineVirtualCamera camera;
     protected override void Init()
     {
         base.Init();
         SceneType = Define.SceneType.InGame;
-        
+        camera = FindObjectOfType<CinemachineVirtualCamera>();
         string className = SelectCharacter();
         MapGenerator();
         SpawnPlayer(className);
+        camera.Follow = player.transform;
     }
 
     string SelectCharacter()
@@ -32,8 +35,8 @@ public class InGameScene : BaseScene
     void MapGenerator()
     {
         var visualizer = Managers.MapManager.tilemapVisualizer;
-        visualizer.floorTilemap = GameObject.FindWithTag("Ground").GetComponent<Tilemap>();
-        visualizer.wallTilemap = GameObject.FindWithTag("Wall").GetComponent<Tilemap>();
+        visualizer.floorTilemap = GameObject.FindWithTag("Ground").GetComponent<Tilemap>(); //맵에 Ground tilemap 존재해야함
+        visualizer.wallTilemap = GameObject.FindWithTag("Wall").GetComponent<Tilemap>();    //맵에 Wall tilemap 존재해야함
         Managers.MapManager.GenerateMap();
     }
     void Start()
@@ -44,11 +47,37 @@ public class InGameScene : BaseScene
     {
         GameObject go = Managers.ResourceManager.InstantiatePrefab("Player/" + className);
         RoomFirstDungeonGenerator roomFirstDungeonGenerator = Managers.MapManager.dungeonGenerator as RoomFirstDungeonGenerator;
-        Vector2Int randomPos = roomFirstDungeonGenerator.roomCenters[Random.Range(0,roomFirstDungeonGenerator.roomCenters.Count)];
+        Vector2Int randomPos = roomFirstDungeonGenerator.rooms[Random.Range(0,roomFirstDungeonGenerator.rooms.Count)];
+        roomFirstDungeonGenerator.rooms.Remove(randomPos);
+        Managers.MapManager.stageData.startPosition = randomPos;
+        Managers.MapManager.stageData.bossPosition = SelectBossRoom(roomFirstDungeonGenerator.rooms, randomPos);
+        Debug.Log(randomPos.x + " " + randomPos.y);
+        Debug.Log( Managers.MapManager.stageData.bossPosition.x + " " +  Managers.MapManager.stageData.bossPosition.y);
         go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
-        player = FindObjectOfType<Player.Player>();
-        playerControl = FindObjectOfType<PlayerControl>();
+        player = go.GetComponent<Player.Player>();
+        playerControl = go.GetComponent<PlayerControl>();
     }
+
+    /// <summary>
+    /// x,y좌표가 spawn Point와 가장 먼 곳을 Boss room으로 설정
+    /// </summary>
+    
+    Vector2Int SelectBossRoom(List<Vector2Int> rooms,Vector2Int startPos)
+    {
+        float farDistance = 0;
+        Vector2Int farPos = startPos;
+        foreach (var room in rooms)
+        {
+            float currentDistance = Vector2Int.Distance(room, startPos);
+            if (currentDistance > farDistance)
+            {
+                farDistance = currentDistance;
+                farPos = room;
+            }
+        }
+        return farPos;
+    }
+    
     public override void Clear()
     {
         Managers.UIManager.CloseAllPages();

@@ -17,7 +17,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     [SerializeField]
     private bool randomWalkRooms = true;
 
-    public List<Vector2Int> roomCenters = new List<Vector2Int>();
+    private List<Vector2Int> roomCenters = new List<Vector2Int>();
+    public List<Vector2Int> rooms = new List<Vector2Int>(); 
     protected override void RunProceduralGeneration()
     {
         CreateRooms();
@@ -38,12 +39,13 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             floor = CreateSimpleRooms(roomList); 
         }
 
-        
+
         foreach(var room in roomList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center)); 
+            rooms.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
         }
-
+        
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
         WallGenerator.CreateWallsNoPaint(floor, tilemapVisualizer);
@@ -84,7 +86,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             roomCenters.Remove(closest);
             HashSet<Vector2Int> newCorridor = CreateCorridor(currentRoomCenter, closest);
             currentRoomCenter = closest;
-            corridors.UnionWith(newCorridor); 
+            corridors.UnionWith(newCorridor);
         }
 
         return corridors;

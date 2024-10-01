@@ -11,7 +11,8 @@ public class MapManager : MonoBehaviour, IManager
     
     [SerializeField]
     public TilemapVisualizer tilemapVisualizer;
-    
+
+    public StageData stageData = new StageData();
     
     public void Init()
     {
@@ -26,5 +27,11 @@ public class MapManager : MonoBehaviour, IManager
     public void GenerateMap()
     {
         dungeonGenerator.GenerateDungeon();
+    }
+
+    public class StageData
+    {
+        public Vector2Int startPosition;
+        public Vector2Int bossPosition;
     }
 }
