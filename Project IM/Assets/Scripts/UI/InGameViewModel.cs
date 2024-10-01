@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityWeld.Binding;
+using Random = UnityEngine.Random;
 
 [Binding]
 public class InGameViewModel : BaseViewModel
@@ -85,7 +86,15 @@ public class InGameViewModel : BaseViewModel
     {
         //Managers.ResourceManager.InstantiatePrefab("Slime");
         Managers.ResourceManager.InstantiatePrefab("Enemy/Slime");
+    }
+    [Binding]
+    public void SpawnSlimeInRandomPos()
+    {
+        //Managers.ResourceManager.InstantiatePrefab("Slime");
+        GameObject go = Managers.ResourceManager.InstantiatePrefab("Enemy/Slime");
 
+        Vector2Int randomPos = Managers.MapManager.SelectRandomFloorPositionInStage();
+        go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
     }
 }
 

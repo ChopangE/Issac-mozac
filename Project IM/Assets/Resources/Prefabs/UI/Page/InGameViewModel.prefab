@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: -1360956885, guid: 28925df8396f83a4cae954ace3f8bdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewModelMethodName: InGameViewModel.CreateStage
+  viewModelMethodName: InGameViewModel.SpawnSlimeInRandomPos
   viewEventName: UnityEngine.UI.Button.onClick
 --- !u!1 &1307239371709128471
 GameObject:

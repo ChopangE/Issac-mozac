@@ -19,6 +19,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
     
     public List<Vector2Int> rooms = new List<Vector2Int>(); 
+    public HashSet<Vector2Int> floors = new HashSet<Vector2Int>();
     protected override void RunProceduralGeneration()
     {
         rooms.Clear();
@@ -32,19 +33,24 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         if (randomWalkRooms)
         {
-            floor = CreateRoomsRandomly(roomList); 
+            floor = CreateRoomsRandomly(roomList);
         }
 
         else
         {
             floor = CreateSimpleRooms(roomList); 
         }
-
+        
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         foreach(var room in roomList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center)); 
             rooms.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
+        }
+
+        foreach (var f in floor)
+        {
+            floors.Add(f);
         }
         
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);

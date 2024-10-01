@@ -32,6 +32,7 @@ public class InGameScene : BaseScene
         SpawnPlayer(className);                 //player생성
         camera.Follow = player.transform;       //카메라 설정
     }
+    
     string SelectCharacter()
     {
         string className = Managers.StatManager.Classes.ToString();
@@ -54,18 +55,15 @@ public class InGameScene : BaseScene
     void SpawnPlayer(string className)
     {
         GameObject go = Managers.ResourceManager.InstantiatePrefab("Player/" + className);
-        RoomFirstDungeonGenerator roomFirstDungeonGenerator = Managers.MapManager.dungeonGenerator as RoomFirstDungeonGenerator;
         
-        Vector2Int randomPos = roomFirstDungeonGenerator.rooms[Random.Range(0,roomFirstDungeonGenerator.rooms.Count)];
-        roomFirstDungeonGenerator.rooms.Remove(randomPos);
+        Managers.MapManager.stageData.startPosition = Managers.MapManager.SelectRandomStartPositionInStage();    //StartPosition 생성
+        Managers.MapManager.stageData.bossPosition =                        //BossPosition 생성
+            Managers.MapManager.
+                SelectBossRoom(Managers.MapManager.stageData.roomsCenter, Managers.MapManager.stageData.startPosition);
         
-        Managers.MapManager.stageData.startPosition = randomPos;
-        Managers.MapManager.stageData.bossPosition = SelectBossRoom(roomFirstDungeonGenerator.rooms, randomPos);
-        
-        Debug.Log(randomPos.x + " " + randomPos.y);
+        Debug.Log(Managers.MapManager.stageData.startPosition.x + " " + Managers.MapManager.stageData.startPosition.y);
         Debug.Log( Managers.MapManager.stageData.bossPosition.x + " " +  Managers.MapManager.stageData.bossPosition.y);
-        
-        go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
+        go.transform.position = new Vector3(Managers.MapManager.stageData.startPosition.x, Managers.MapManager.stageData.startPosition.y, 0);
         player = go.GetComponent<Player.Player>();
         playerControl = go.GetComponent<PlayerControl>();
     }
@@ -74,21 +72,6 @@ public class InGameScene : BaseScene
     /// x,y좌표가 spawn Point와 가장 먼 곳을 Boss room으로 설정
     /// </summary>
     
-    Vector2Int SelectBossRoom(List<Vector2Int> rooms,Vector2Int startPos)
-    {
-        float farDistance = 0;
-        Vector2Int farPos = startPos;
-        foreach (var room in rooms)
-        {
-            float currentDistance = Vector2Int.Distance(room, startPos);
-            if (currentDistance > farDistance)
-            {
-                farDistance = currentDistance;
-                farPos = room;
-            }
-        }
-        return farPos;
-    }
     
     public override void Clear()
     {
