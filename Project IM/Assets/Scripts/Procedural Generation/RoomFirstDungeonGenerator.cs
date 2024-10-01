@@ -17,10 +17,11 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     [SerializeField]
     private bool randomWalkRooms = true;
 
-    private List<Vector2Int> roomCenters = new List<Vector2Int>();
+    
     public List<Vector2Int> rooms = new List<Vector2Int>(); 
     protected override void RunProceduralGeneration()
     {
+        rooms.Clear();
         CreateRooms();
     }
 
@@ -39,7 +40,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             floor = CreateSimpleRooms(roomList); 
         }
 
-
+        List<Vector2Int> roomCenters = new List<Vector2Int>();
         foreach(var room in roomList)
         {
             roomCenters.Add((Vector2Int)Vector3Int.RoundToInt(room.center)); 

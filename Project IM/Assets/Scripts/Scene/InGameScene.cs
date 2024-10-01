@@ -18,12 +18,20 @@ public class InGameScene : BaseScene
         base.Init();
         SceneType = Define.SceneType.InGame;
         camera = FindObjectOfType<CinemachineVirtualCamera>();
-        string className = SelectCharacter();
-        MapGenerator();
-        SpawnPlayer(className);
-        camera.Follow = player.transform;
+        CreateStage();
     }
 
+    public void CreateStage()                          //stage가 바뀔때마다 호출
+    {
+        if (player != null)
+        {
+            Managers.ResourceManager.Destroy(player.gameObject);
+        }
+        string className = SelectCharacter();   //캐릭터 정보
+        MapGenerator();                         //맵생성
+        SpawnPlayer(className);                 //player생성
+        camera.Follow = player.transform;       //카메라 설정
+    }
     string SelectCharacter()
     {
         string className = Managers.StatManager.Classes.ToString();
@@ -47,12 +55,16 @@ public class InGameScene : BaseScene
     {
         GameObject go = Managers.ResourceManager.InstantiatePrefab("Player/" + className);
         RoomFirstDungeonGenerator roomFirstDungeonGenerator = Managers.MapManager.dungeonGenerator as RoomFirstDungeonGenerator;
+        
         Vector2Int randomPos = roomFirstDungeonGenerator.rooms[Random.Range(0,roomFirstDungeonGenerator.rooms.Count)];
         roomFirstDungeonGenerator.rooms.Remove(randomPos);
+        
         Managers.MapManager.stageData.startPosition = randomPos;
         Managers.MapManager.stageData.bossPosition = SelectBossRoom(roomFirstDungeonGenerator.rooms, randomPos);
+        
         Debug.Log(randomPos.x + " " + randomPos.y);
         Debug.Log( Managers.MapManager.stageData.bossPosition.x + " " +  Managers.MapManager.stageData.bossPosition.y);
+        
         go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
         player = go.GetComponent<Player.Player>();
         playerControl = go.GetComponent<PlayerControl>();

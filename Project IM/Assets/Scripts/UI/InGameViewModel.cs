@@ -73,6 +73,13 @@ public class InGameViewModel : BaseViewModel
 
     }
 
+
+    [Binding]
+    public void CreateStage()
+    {
+        InGameScene inGame = Managers.SceneManager.CurrentScene as InGameScene;
+        inGame.CreateStage();
+    }
     [Binding]
     public void SpawnSlime()
     {

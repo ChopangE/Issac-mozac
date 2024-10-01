@@ -37,7 +37,7 @@ public class PoolManager : IManager
             go.name = Original.name;
             return go.GetComponent<Poolable>();
         }
-
+        
         public void Push(Poolable poolable)
         {
             if (poolable == null) return;
