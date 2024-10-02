@@ -12,6 +12,7 @@ public class CanAttack : Conditional
     public SharedTransform target;
     public float distance;
     public float fov;
+
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value, fov)) {
             return TaskStatus.Success;

@@ -8,6 +8,6 @@ public class EnemySkeleton : EnemyBase
     {
         base.GetDamage(damage);
         if(CurHealth > 0 ) 
-            anim.Play("SkeletonDead");
+            anim.Play("SkeletonHit");
     }
 }

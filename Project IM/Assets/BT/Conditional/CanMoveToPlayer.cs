@@ -12,12 +12,12 @@ public class CanMoveToPlayer : Conditional
         //target.Value = GameObject.FindGameObjectWithTag("Player").transform;
     }
     public override TaskStatus OnUpdate() {
-        if (WithinSight(target.Value)) {
+        if (WithinSight(target.Value))
+        {
             return TaskStatus.Success;
         }
         return TaskStatus.Failure;
     }
-
     public bool WithinSight(Transform targetTransform) {
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, distance, LayerMask.GetMask("Player"));
         if (hit.Length > 0)

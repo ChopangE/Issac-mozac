@@ -1,7 +1,11 @@
-using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-public class MoveToPlayer : Action {
+using UnityEngine;
+
+public class MoveToPlayerSkeleton : Action
+{
     float speed;
     public SharedTransform target;
     SpriteRenderer spriteRenderer;
@@ -20,7 +24,7 @@ public class MoveToPlayer : Action {
         else if(dist > 10f) {
             return TaskStatus.Failure;
         }
-        
+        anim.Play("SkeletonWalk");
         spriteRenderer.flipX = transform.position.x > target.Value.position.x;
         transform.position = Vector2.MoveTowards(transform.position,
             target.Value.position, speed * Time.deltaTime);
