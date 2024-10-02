@@ -61,6 +61,7 @@ public class InGameViewModel : BaseViewModel
     {
         FHP = value / Managers.StatManager.GetMaxHealth();
     }
+    
     void MethodBinding()                    //필요한 method들을 binding하는 method
     {
         player.healthEvent += HpBinding;
@@ -73,8 +74,7 @@ public class InGameViewModel : BaseViewModel
         player.healthEvent -= FHpBinding;
 
     }
-
-
+    
     [Binding]
     public void CreateStage()
     {
@@ -93,6 +93,14 @@ public class InGameViewModel : BaseViewModel
         //Managers.ResourceManager.InstantiatePrefab("Slime");
         GameObject go = Managers.ResourceManager.InstantiatePrefab("Enemy/Slime");
 
+        Vector2Int randomPos = Managers.MapManager.SelectRandomFloorPositionInStage();
+        go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
+    }
+
+    [Binding]
+    public void SpawnSkeletonRandomPos()
+    {
+        GameObject go = Managers.ResourceManager.InstantiatePrefab("Enemy/Skeleton");
         Vector2Int randomPos = Managers.MapManager.SelectRandomFloorPositionInStage();
         go.transform.position = new Vector3(randomPos.x, randomPos.y, 0);
     }

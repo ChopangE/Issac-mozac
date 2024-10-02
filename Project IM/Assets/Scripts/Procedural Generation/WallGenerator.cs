@@ -38,7 +38,6 @@ public static class WallGenerator
             }
         }
         floorPositions.UnionWith(basicWallPositions);
-
     }
     private static HashSet<Vector2Int> FindWallsInDirections(HashSet<Vector2Int> floorPositions, List<Vector2Int> directionList)
     {

@@ -14,11 +14,6 @@ public class MoveToOriginalPos : Action
         originalPos = transform.position;
     }
 
-    public override void OnReset()
-    {
-        base.OnReset();
-    }
-
     public override TaskStatus OnUpdate() {
         if ((transform.position - originalPos).magnitude < 0.01f) return TaskStatus.Success;
         transform.position = Vector2.MoveTowards(transform.position,

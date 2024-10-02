@@ -10,8 +10,6 @@ using UnityWeld.Binding;
 [Binding]
 public class BaseViewModel : MonoBehaviour, INotifyPropertyChanged
 {
-    
-    
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -11,7 +11,6 @@ public class SlimeDie : Die
     {
         base.OnStart();
         anim.Play("SlimeDie");
-        
     }
     
     
