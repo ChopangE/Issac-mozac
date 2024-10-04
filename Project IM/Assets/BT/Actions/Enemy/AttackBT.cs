@@ -17,10 +17,7 @@ public class AttackBT : Action
         coll = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
         enemyBase = GetComponent<EnemyBase>();
-    }
-
-    public override void OnStart()
-    {
         damage = gameObject.GetComponent<EnemyBase>().Data.Damage;
+
     }
 }

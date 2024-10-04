@@ -34,7 +34,6 @@ public class SlimeAttack : AttackBT
             });
     }
     public override TaskStatus OnUpdate() {
-
         return TaskStatus.Success;
     }
 

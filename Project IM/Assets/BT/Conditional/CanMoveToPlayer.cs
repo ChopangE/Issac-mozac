@@ -8,9 +8,7 @@ public class CanMoveToPlayer : Conditional
 {
     public SharedTransform target;
     public float distance;
-    public override void OnAwake() {
-        //target.Value = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value))
         {
