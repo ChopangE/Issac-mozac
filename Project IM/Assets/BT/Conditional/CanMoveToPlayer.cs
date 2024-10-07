@@ -8,12 +8,20 @@ public class CanMoveToPlayer : Conditional
 {
     public SharedTransform target;
     public float distance;
-    
+    private Animator anim;
+    public override void OnAwake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value))
         {
+            anim.SetBool("isWalk", true);
             return TaskStatus.Success;
         }
+        anim.SetBool("isWalk", false);
+        anim.SetBool("isAttack", false);
         return TaskStatus.Failure;
     }
     public bool WithinSight(Transform targetTransform) {

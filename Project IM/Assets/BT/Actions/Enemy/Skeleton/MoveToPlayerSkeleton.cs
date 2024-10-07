@@ -15,7 +15,6 @@ public class MoveToPlayerSkeleton : Action
         speed = gameObject.GetComponent<EnemyBase>().Data.Speed;
         anim = gameObject.GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        anim.SetTrigger("Walk");
     }
     public override TaskStatus OnUpdate() {
         float dist = Vector2.SqrMagnitude(transform.position - target.Value.position);
@@ -28,7 +27,7 @@ public class MoveToPlayerSkeleton : Action
         spriteRenderer.flipX = transform.position.x > target.Value.position.x;
         transform.position = Vector2.MoveTowards(transform.position,
             target.Value.position, speed * Time.deltaTime);
-        
+        anim.SetBool("isWalk",true);
         return TaskStatus.Running;
     }
 }

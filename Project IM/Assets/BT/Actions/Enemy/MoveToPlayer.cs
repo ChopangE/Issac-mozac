@@ -15,6 +15,7 @@ public class MoveToPlayer : Action {
     public override TaskStatus OnUpdate() {
         float dist = Vector2.SqrMagnitude(transform.position - target.Value.position);
         if (dist < 3f) {
+            Debug.Log("HI");
             return TaskStatus.Success;
         }
         else if(dist > 10f) {

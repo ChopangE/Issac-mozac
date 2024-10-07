@@ -12,11 +12,26 @@ public class CanAttack : Conditional
     public SharedTransform target;
     public float distance;
     public float fov;
+    private Animator anim;
 
+    public override void OnAwake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public override void OnStart()
+    {
+        anim.SetBool("isAttack",false);
+    }
+
+    
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value, fov)) {
+            anim.SetBool("isAttack", true);
+            anim.SetBool("isWalk",false);
             return TaskStatus.Success;
         }
+        anim.SetBool("isAttack", false);
         return TaskStatus.Failure;
     }
 
