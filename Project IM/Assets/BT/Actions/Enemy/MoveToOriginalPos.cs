@@ -21,10 +21,8 @@ public class MoveToOriginalPos : Action
     public override TaskStatus OnUpdate() {
         if ((transform.position - originalPos).magnitude < 0.01f)
         {
-            anim.SetBool("isWalk",false);
             return TaskStatus.Failure;
         }
-        anim.SetBool("isWalk",true);
         spriteRenderer.flipX = transform.position.x > originalPos.x;
         transform.position = Vector2.MoveTowards(transform.position,
             originalPos, speed * Time.deltaTime);

@@ -1,27 +1,39 @@
-using BehaviorDesigner.Runtime.Tasks;
-using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-public class CanMoveToPlayer : Conditional
+public class CanAttackSkeleton : Conditional
 {
     public SharedTransform target;
     public float distance;
+    public float fov;
     private Animator anim;
+
     public override void OnAwake()
     {
         anim = GetComponent<Animator>();
+        target.Value = GameObject.FindObjectOfType<Player.Player>().transform;
     }
 
+    public override void OnStart()
+    {
+        anim.SetBool("isAttack",false);
+    }
+
+    
     public override TaskStatus OnUpdate() {
-        if (WithinSight(target.Value))
-        {
+        if (WithinSight(target.Value, fov)) {
+            anim.SetBool("isAttack", true);
+            anim.SetBool("isWalk",false);
             return TaskStatus.Success;
         }
+        anim.SetBool("isAttack", false);
         return TaskStatus.Failure;
     }
-    public bool WithinSight(Transform targetTransform) {
+
+    public bool WithinSight(Transform targetTransform, float fieldOfViewAngle) {
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, distance, LayerMask.GetMask("Player"));
         if (hit.Length > 0)
         {
@@ -41,6 +53,6 @@ public class CanMoveToPlayer : Conditional
         return false;
         // Vector2 direction = targetTransform.position - transform.position;
         // float dist = direction.magnitude;
-        // return dist <= distance;
+        // return Vector2.Angle(direction, transform.forward) < fieldOfViewAngle && dist <= distance;
     }
 }

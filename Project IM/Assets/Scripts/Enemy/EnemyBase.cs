@@ -5,39 +5,47 @@ using GameData;
 using UnityEngine;
 using Util;
 
-public class EnemyBase : MonoBehaviour, IDamageable
+namespace Enemy
 {
-    protected Animator anim;
-    public Define.EnemyType enemyType;
-    public EnemyDataSO dataSO;
-    private EnemyData data;
-    public EnemyData Data => data;
-    private float curHealth;
-    public float CurHealth {get => curHealth; set { curHealth = value; } }
-
-    void Awake()
+    public class EnemyBase : MonoBehaviour, IDamageable
     {
-        Init();
-    }
+        protected Animator anim;
+        public Define.EnemyType enemyType;
+        public EnemyDataSO dataSO;
+        private EnemyData data;
+        public EnemyData Data => data;
+        private float curHealth;
 
-    void Init()
-    {
-        anim = GetComponent<Animator>();
-        data = dataSO.DataContainer.enemyDatas[(int)enemyType];
-    }
+        public float CurHealth
+        {
+            get => curHealth;
+            set { curHealth = value; }
+        }
 
-    protected virtual void OnEnable()
-    {
-        CurHealth = data.Health;
-    }
+        void Awake()
+        {
+            Init();
+        }
 
-    public virtual void GetDamage(float damage)
-    {
-        CurHealth -= damage;
-    }
+        void Init()
+        {
+            anim = GetComponent<Animator>();
+            data = dataSO.DataContainer.enemyDatas[(int)enemyType];
+        }
 
-    void Die()
-    {
-        Managers.ResourceManager.Destroy(gameObject);
+        protected virtual void OnEnable()
+        {
+            CurHealth = data.Health;
+        }
+
+        public virtual void GetDamage(float damage)
+        {
+            CurHealth -= damage;
+        }
+
+        void Die()
+        {
+            Managers.ResourceManager.Destroy(gameObject);
+        }
     }
 }

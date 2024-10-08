@@ -19,19 +19,13 @@ public class CanAttack : Conditional
         anim = GetComponent<Animator>();
     }
 
-    public override void OnStart()
-    {
-        anim.SetBool("isAttack",false);
-    }
+    
 
     
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value, fov)) {
-            anim.SetBool("isAttack", true);
-            anim.SetBool("isWalk",false);
             return TaskStatus.Success;
         }
-        anim.SetBool("isAttack", false);
         return TaskStatus.Failure;
     }
 

@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySlime : EnemyBase
+namespace Enemy
 {
-    
-    public override void GetDamage(float damage)
-    {
-        base.GetDamage(damage);
-        if(CurHealth > 0 ) 
-            anim.Play("SlimeHit");
-    }
+  public class EnemySlime : EnemyBase
+  {
+      
+      public override void GetDamage(float damage)
+      {
+          base.GetDamage(damage);
+          if(CurHealth > 0 ) 
+              anim.Play("SlimeHit");
+      }
+  }
+  
 }

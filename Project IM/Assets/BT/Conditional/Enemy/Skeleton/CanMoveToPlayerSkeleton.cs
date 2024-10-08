@@ -1,10 +1,10 @@
-using BehaviorDesigner.Runtime.Tasks;
-using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-public class CanMoveToPlayer : Conditional
+public class CanMoveToPlayerSkeleton : Conditional
 {
     public SharedTransform target;
     public float distance;
@@ -17,8 +17,11 @@ public class CanMoveToPlayer : Conditional
     public override TaskStatus OnUpdate() {
         if (WithinSight(target.Value))
         {
+            anim.SetBool("isWalk", true);
             return TaskStatus.Success;
         }
+        anim.SetBool("isWalk", false);
+        anim.SetBool("isAttack", false);
         return TaskStatus.Failure;
     }
     public bool WithinSight(Transform targetTransform) {
