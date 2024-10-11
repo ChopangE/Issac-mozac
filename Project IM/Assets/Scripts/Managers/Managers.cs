@@ -44,13 +44,6 @@ public class Managers : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(StatManager.Classes.ToString());
-        }
-    }
     void Create()
     {
         string prefix = "Managers/";    //MonoBehavior를 가진 Manager는 여기서 Create
