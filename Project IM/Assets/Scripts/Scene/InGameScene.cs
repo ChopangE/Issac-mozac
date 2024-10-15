@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using Cinemachine;
+using Photon.Pun;
 using Photon.Pun.Demo.Cockpit;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class InGameScene : BaseScene
         string className = SelectCharacter();   //캐릭터 정보
         MapGenerator();                         //맵생성
         SpawnPlayer(className);                 //player생성
-        
+        //SpawnNetworkPlayer(className);          //networkPlayer생성
         camera.Follow = player.transform;       //카메라 설정
     }
     
@@ -57,7 +58,6 @@ public class InGameScene : BaseScene
     void SpawnPlayer(string className)
     {
         GameObject go = Managers.ResourceManager.InstantiatePrefab("Player/" + className);
-        
         Managers.MapManager.stageData.startPosition = Managers.MapManager.SelectRandomStartPositionInStage();    //StartPosition 생성
         Managers.MapManager.stageData.bossPosition =                        //BossPosition 생성
             Managers.MapManager.
@@ -70,6 +70,14 @@ public class InGameScene : BaseScene
         playerControl = go.GetComponent<PlayerControl>();
     }
 
+    void SpawnNetworkPlayer(string className)
+    {
+        Managers.MapManager.stageData.startPosition = Managers.MapManager.SelectRandomStartPositionInStage();    //StartPosition 생성
+        Vector3 spawnPos = new Vector3(Managers.MapManager.stageData.startPosition.x, Managers.MapManager.stageData.startPosition.y, 0);
+        GameObject go = PhotonNetwork.Instantiate(className, spawnPos, Quaternion.identity);
+        player = go.GetComponent<Player.Player>();
+        playerControl = go.GetComponent<PlayerControl>();
+    }
     /// <summary>
     /// x,y좌표가 spawn Point와 가장 먼 곳을 Boss room으로 설정
     /// </summary>

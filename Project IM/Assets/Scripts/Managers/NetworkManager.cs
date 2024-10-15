@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class NetworkManager : MonoBehaviourPunCallbacks
+public class NetworkManager : MonoBehaviourPunCallbacks, IManager
 {
     public GameObject player;
     private void Start()
@@ -32,6 +33,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Join");
         Vector3 spawonPos = Vector3.zero;
 
-        PhotonNetwork.Instantiate(player.name, spawonPos, Quaternion.identity);
+        //PhotonNetwork.Instantiate(player.name, spawonPos, Quaternion.identity);
+    }
+
+    public void Init()
+    {
+        
     }
 }

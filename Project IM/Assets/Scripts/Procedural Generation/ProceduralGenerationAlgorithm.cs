@@ -8,8 +8,8 @@ public class ProceduralGenerationAlgorithm
     #region SimpleWalk
     public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
-        // HashSet: TKey°¡ ¾ø°í TValue¸¸ Á¸ÀçÇÏ¸ç, ¸¶Âù°¡Áö·Î ¼ø¼­, Áßº¹ÀÌ Á¸ÀçÇÏÁö ¾Ê´Â´Ù. 
-        // VectorInt: int Type¸¸ »ç¿ë °¡´ÉÇÑ Vector 
+        // HashSet: TKeyê°€ ì—†ê³  TValueë§Œ ì¡´ì¬í•˜ë©°, ë§ˆì°¬ê°€ì§€ë¡œ ìˆœì„œ, ì¤‘ë³µì´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤. 
+        // VectorInt: int Typeë§Œ ì‚¬ìš© ê°€ëŠ¥í•œ Vector 
 
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
         
@@ -41,7 +41,7 @@ public class ProceduralGenerationAlgorithm
                 // Split horizontally or vertically 
                 if(Random.value < 0.5f)
                 {
-                    // ÀÌ·¸°Ô µÎ ÆÄÆ®·Î ³ª´¶ ÀÌÀ¯´Â, ¸¸¾à random.value·Î 1/2¸¦ ¼³Á¤ÇÏÁö ¾Ê¾Ò´Ù¸é, Ç×»ó Horizontal·Î ¸ÕÀú ÀÚ¸£±â ¶§¹® 
+                    // ì´ë ‡ê²Œ ë‘ íŒŒíŠ¸ë¡œ ë‚˜ë‰œ ì´ìœ ëŠ”, ë§Œì•½ random.valueë¡œ 1/2ë¥¼ ì„¤ì •í•˜ì§€ ì•Šì•˜ë‹¤ë©´, í•­ìƒ Horizontalë¡œ ë¨¼ì € ìë¥´ê¸° ë•Œë¬¸ 
                     if(room.size.y >= minHeight * 2)
                     {
                         SplitHoriznotally(minWidth, roomsQueue, room);
@@ -114,7 +114,7 @@ public class ProceduralGenerationAlgorithm
 
 public static class Direction2D
 {
-    // RandomWalk¿¡¼­ ¿òÁ÷ÀÏ ¹æÇâÀ» Á¦½Ã 
+    // RandomWalkì—ì„œ ì›€ì§ì¼ ë°©í–¥ì„ ì œì‹œ 
 
     public static List<Vector2Int> cardinalDirectionList = new List<Vector2Int>
     {
