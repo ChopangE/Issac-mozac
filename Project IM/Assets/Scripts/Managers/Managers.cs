@@ -55,7 +55,7 @@ public class Managers : MonoBehaviour
         InitSceneManager();             //SceneManager Initialize
         InitUIManager();
         InitMapManager();
-        //InitNetworkManager();
+        InitNetworkManager();
     }
 
     void InitMapManager()
