@@ -25,7 +25,7 @@ MonoBehaviour:
     - Id: Slime
       Health: 30
       Damage: 3
-      Speed: 2
+      Speed: 3
     - Id: Skeleton
       Health: 50
       Damage: 5

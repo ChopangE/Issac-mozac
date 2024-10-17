@@ -14,6 +14,7 @@ public class MainMenuViewModel : BaseViewModel
         Managers.StatManager.Classes = Define.Classes.Archer;
         Managers.StatManager.RefreshData();
         Managers.SceneManager.LoadScene(Define.SceneType.InGame);
+        //Managers.SceneManager.LoadScene(Define.SceneType.InGame, true);
     }
     
     [Binding]

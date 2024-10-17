@@ -47,6 +47,7 @@ public class InGameScene : BaseScene
     void MapGenerator()
     {
         var visualizer = Managers.MapManager.tilemapVisualizer;
+        if(visualizer == null) return;
         visualizer.floorTilemap = GameObject.FindWithTag("Ground").GetComponent<Tilemap>(); //맵에 Ground tilemap 존재해야함
         visualizer.wallTilemap = GameObject.FindWithTag("Wall").GetComponent<Tilemap>();    //맵에 Wall tilemap 존재해야함
         Managers.MapManager.GenerateMap();

@@ -31,7 +31,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IManager
     public override void OnJoinedRoom()
     {
         Debug.Log("Join");
-        Vector3 spawonPos = Vector3.zero;
+        //Vector3 spawonPos = Vector3.zero;
 
         //PhotonNetwork.Instantiate(player.name, spawonPos, Quaternion.identity);
     }

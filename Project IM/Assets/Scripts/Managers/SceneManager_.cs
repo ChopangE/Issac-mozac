@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Interface;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Util;
@@ -13,10 +14,17 @@ public class SceneManager_ : IManager
     // {
     //     SceneManager.sceneLoaded += OnSceneLoaded;
     // }
-    public void LoadScene(Define.SceneType type)
+    public void LoadScene(Define.SceneType type, bool isNetwork = false)
     {
         CurrentScene.Clear();
-        SceneManager.LoadScene(type.ToString());
+        if (isNetwork)
+        {
+            PhotonNetwork.LoadLevel(type.ToString());
+        }
+        else
+        {
+            SceneManager.LoadScene(type.ToString());
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
